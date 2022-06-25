@@ -1,0 +1,3 @@
+[submodule "BugSack"]
+	path = BugSack
+	url = https://github.com/funkydude/BugSack.git
