@@ -1,5 +1,5 @@
 [submodule "BugSack"]
-	path = BugSack
+	path = _BugSack
 	url = https://github.com/funkydude/BugSack.git
 [submodule "AutoTurnIn"]
 	path = AutoTurnIn
