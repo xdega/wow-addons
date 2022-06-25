@@ -1,3 +1,9 @@
 [submodule "BugSack"]
 	path = BugSack
 	url = https://github.com/funkydude/BugSack.git
+[submodule "AutoTurnIn"]
+	path = AutoTurnIn
+	url = https://github.com/lure/AutoTurnIn.git
+[submodule "AdiBags"]
+	path = AdiBags
+	url = https://github.com/AdiAddons/AdiBags.git
