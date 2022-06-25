@@ -1,0 +1,16 @@
+tag 593aa772f9728dd2cd089309f937ea25b92066a9 DetailsRetail.9.2.0.9780.146
+Author:	Tercio Jose <terciob19@hotmail.com>
+Date:	Thu Apr 28 19:09:38 2022 -0300
+
+commit dfd3fa84067a67dffb4f4d87b2def99dd8ee1b90
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Thu Apr 28 16:44:04 2022 -0300
+
+    Improvements on skin installation
+
+commit 1afb89790459faec706ca4c1c11c04c07d201ec8
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Thu Apr 28 15:52:11 2022 -0300
+
+    Open Raid Library update
+

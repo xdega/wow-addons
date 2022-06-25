@@ -113,15 +113,15 @@ do
 						if not bestScore or slotScore > bestScore then
 							addon:Debug('FindSlotForItem', bag, slot, 'slotCount=', slotCount, 'score=', slotScore, 'NEW BEST SLOT')
 							bestBag, bestSlot, bestScore = bag, slot, slotScore
-						--[==[@debug@
+						--[===[@debug@
 						else
 							addon:Debug('FindSlotForItem', bag, slot, 'slotCount=', slotCount, 'score=', slotScore, '<', bestScore)
-						--@end-debug@]==]
+						--@end-debug@]===]
 						end
-					--[==[@debug@
+					--[===[@debug@
 					else
 						addon:Debug('FindSlotForItem', bag, slot, 'slotCount=', slotCount, ': not enough space')
-					--@end-debug@]==]
+					--@end-debug@]===]
 					end
 				end
 			end

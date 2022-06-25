@@ -1,0 +1,12 @@
+tag 7c65a4cbc0d0cef23a131b1c7906ba4ab55f6db7 1.2.5
+Author:	Adam Koch <me@adamko.ch>
+Date:	Tue May 31 21:19:14 2022 -0400
+
+1.2.5 Release
+
+commit 7dd0ced4bd3f06a810def434ae88b6333b323017
+Author: Adam Koch <me@adamko.ch>
+Date:   Tue May 31 21:19:05 2022 -0400
+
+    Fix PushTags.cmd.
+

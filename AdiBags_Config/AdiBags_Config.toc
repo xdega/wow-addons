@@ -3,8 +3,8 @@
 ## Title: AdiBags Configuration
 ## Notes: Adirelle's bag addon.
 ## Author: Adirelle
-## Version: 
-## X-Date: 2022-05-20T21:33:22Z
+## Version: v1.9.26
+## X-Date: 2021-11-12T16:27:20Z
 ## X-Part-Of: AdiBags
 ## LoadOnDemand: 1
 ## Dependencies: AdiBags
@@ -20,3 +20,6 @@
 ..\AdiBags\config\Config-ItemList.lua
 ..\AdiBags\config\Options.lua
 
+#@debug@
+# ## Version: DEV
+#@end-debug@

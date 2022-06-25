@@ -1,0 +1,11 @@
+## Interface: 90105
+
+## Title: AdiBags - Outfitter support
+## Notes: Adds Outfitter set filters to AdiBags.
+## Author: Adirelle
+## Version: v1.5.11
+## X-Date: 2021-11-12T16:29:37Z
+
+## Dependencies: AdiBags, Outfitter
+
+AdiBags_Outfitter.lua
