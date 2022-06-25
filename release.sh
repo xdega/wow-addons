@@ -424,7 +424,7 @@ repository_type=git
 # fi
 
 # $releasedir must be an absolute path or inside $topdir.
-target="$(pwd)/$releasedir"
+target="$(pwd)"
 releasedir=$target
 echo "Releasing to... $releasedir"
 # exit 1
