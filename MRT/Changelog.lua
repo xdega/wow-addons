@@ -1,6 +1,62 @@
 local GlobalAddonName, ExRT = ...
 
 ExRT.Options.Changelog = [=[
+v.4630
+* Raid Check: consumables on ready check: added support for Eternal Augment Rune
+* Minor fixes
+
+v.4620
+* 9.2 Update
+
+v.4610
+* Updated Chinese translation (by martinkerth)
+
+v.4610-BC
+* Raid cooldowns: Fixed and added feign death cd
+* Raid cooldowns: added power infusion, ice block, evasion cds
+* Marks Bar: Removed world marks from marks bar [Not available in tbc]
+* Invite Tools: Fixed auto loot method
+
+v.4610-Classic
+* Fixed maximum raid groups for ready checks
+* Removed world marks from marks bar [Not available in classic]
+* Invite Tools: Fixed auto loot method
+
+v.4600
+* 9.1.5 update
+
+v.4600-BC
+* Minor fixes
+
+v.4600-Classic
+* Minor fixes
+
+v.4580
+* Note: added option "Hide lines with timers but without my name". You can bypass this option with "all" or "glowall" keywords, ex.: {time:1:20,all}
+* Raid Check: added font settings for raid overview window
+* Raid Check: removed food gained by couduit power from raid overview check 
+* Raid Check: consumables on ready check: added enhancement shamans weapon enchants
+* Raid cooldowns: added support for 9.1 trinkets
+* Raid cooldowns: added Masque support
+* Raid Inspect: added SoD achievements
+* Minor fixes
+
+v.4580-BC
+* toc update
+* Invite tools: added options for loot method
+* Raid Check: added font settings for raid overview window
+* Note: added some icons to list for raids from current phase
+* Minor fixes
+
+v.4560
+* Raid cooldowns: Added support for new covenant legendaries
+* Minor fixes
+
+v.4560-BC
+* Raid Attendance: fixed BC raids to log attendance
+* Saving log: added options for arena/5ppl hc/5ppl normal
+* Bugfixes
+
 v.4550
 * Addon renamed from "Exorsus Raid Tools" to "Method Raid Tools". Be sure that addon "Method Raid Tools [Storage]" is enabled to keep all your saved options/data.
 * 9.1 Update
@@ -226,7 +282,7 @@ v.4300
 * Note: added "{p2}...{/p}" template for specific boss phase
 * Note: added option to change note position in list via drag&drop
 * Note: fixed fps lag for truncated note with a lot timers
-* Note: added dbm supprort for timers with phase
+* Note: added dbm support for timers with phase
 * Note: added help for some timer constructions
 * Note: added "/rt note set notename" command for quick update
 * Bonus Loot: module is planned to be removed in future updates, export data if you need to save it

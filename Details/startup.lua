@@ -146,13 +146,15 @@ function Details:StartMeUp() --I'll never stop!
 		function self:RefreshAfterStartup()
 
 			--repair nicknames
-			local currentCombat = Details:GetCurrentCombat()
-			local containerDamage = currentCombat:GetContainer(DETAILS_ATTRIBUTE_DAMAGE)
-			for _, actorObject in containerDamage:ListActors() do
-				--get the actor nickname
-				local nickname = Details:GetNickname(actorObject:Name(), false, true)
-				if (nickname) then
-					actorObject.displayName = nickname
+			if (not _detalhes.ignore_nicktag) then
+				local currentCombat = Details:GetCurrentCombat()
+				local containerDamage = currentCombat:GetContainer(DETAILS_ATTRIBUTE_DAMAGE)
+				for _, actorObject in containerDamage:ListActors() do
+					--get the actor nickname
+					local nickname = Details:GetNickname(actorObject:Name(), false, true)
+					if (nickname) then
+						actorObject.displayName = nickname
+					end
 				end
 			end
 
@@ -494,8 +496,6 @@ function Details:StartMeUp() --I'll never stop!
 
 	--shutdown pre-pot announcer
 	Details.announce_prepots.enabled = false
-	--disable the min healing to show
-	Details.deathlog_healingdone_min =  1
 	--remove standard skin on 9.0.1
 	_detalhes.standard_skin = false
 	--enforce to show 6 abilities on the tooltip

@@ -5,7 +5,7 @@
 GTFO Fail List - Legion
 ]]--
 
-if (not GTFO.ClassicMode) then
+if (not (GTFO.ClassicMode or GTFO.BurningCrusadeMode)) then
 
 --- ********************
 --- * The Broken Isles *
@@ -422,6 +422,23 @@ GTFO.SpellID["242880"] = {
 
 GTFO.SpellID["241666"] = {
   --desc = "Fel Rupture (Tugar Bloodtotem)";
+  sound = 3;
+};
+
+GTFO.SpellID["241719"] = {
+  --desc = "Jormog's Fury (Jormog the Behemoth)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["242472"] = {
+  --desc = "Spit Bile (Bile Spitter)";
+  applicationOnly = true;
+  sound = 3;
+};
+
+GTFO.SpellID["238027"] = {
+  --desc = "Stalactite (Tugar Bloodtotem)";
   sound = 3;
 };
 

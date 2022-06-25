@@ -219,12 +219,12 @@ if not ExRT.isClassic and UnitLevel'player' > 50 then
 	--Haste		Mastery		Crit		Versa		Int		Str 		Agi		Stam		Stam		Special
 	[308488]=30,	[308506]=30,	[308434]=30,	[308514]=30,	[327708]=20,	[327706]=20,	[327709]=20,	[308525]=30,	[327707]=30,	[308637]=30,
 	[308474]=18,	[308504]=18,	[308430]=18,	[308509]=18,	[327704]=18,	[327701]=18,	[327705]=18,	[327702]=18,	[308525]=18,
-									[341449]=20,
+									--[341449]=20,
 	}
 	module.db.tableFoodIsBest = {
 	--Haste		Mastery		Crit		Versa		Int		Str 		Agi		Stam		Stam		Special
 	[308488]=30,	[308506]=30,	[308434]=30,	[308514]=30,	[327708]=30,	[327706]=30,	[327709]=30,	[308525]=30,	[327707]=30,	[308637]=30,
-									[341449]=30,
+									--[341449]=30,
 	}
 	module.db.tableFood_headers = {0,18,30}
 
@@ -297,7 +297,7 @@ module.db.RaidCheckReadyCheckTable = {}
 module.db.RaidCheckReadyPPLNum = 0
 module.db.RaidCheckReadyCheckHideSchedule = nil
 
-module.db.tableRunes = {[224001]=5,[270058]=6,[317065]=6,[347901]=18,}
+module.db.tableRunes = {[224001]=5,[270058]=6,[317065]=6,[347901]=18,[367405]=18,}
 
 module.db.durability = {}
 module.db.oil = {}
@@ -1158,14 +1158,67 @@ function module.options:Load()
 		self:tooltipReload(self)
 	end)
 
-	self.chkReadyCheckFrameHtmlTimer = ELib:Text(self.tab.tabs[2],L.raidcheckReadyCheckTimerTooltip,11):Size(0,24):Point(15,-148)
-	self.chkReadyCheckFrameEditBoxTimer = ELib:Edit(self.tab.tabs[2],6,true):Size(50,20):Point("TOP",0,-150):Point("LEFT",self.chkReadyCheckFrameHtmlTimer,"RIGHT",10,0):Text(VMRT.RaidCheck.ReadyCheckFrameTimerFade or "4"):OnChange(function(self)
+
+	self.sliderFontSize = ELib:Slider(self.tab.tabs[2],""):Size(320):Point(200,-145):Range(10,80):SetTo(VMRT.RaidCheck.ReadyCheckFontSize or 12):OnChange(function(self,event) 
+		event = floor(event + .5)
+		VMRT.RaidCheck.ReadyCheckFontSize = event
+		module.frame:UpdateFont()
+		self.tooltipText = event
+		self:tooltipReload(self)
+	end)
+	ELib:Text(self.tab.tabs[2],L.cd2OtherSetFontSize..":",11):Point("RIGHT",self.sliderFontSize,"LEFT",-5,0):Color(1,.82,0,1):Right()
+
+	local function dropDownFontSetValue(_,arg1)
+		ELib:DropDownClose()
+		VMRT.RaidCheck.ReadyCheckFont = arg1
+		self.dropDownFont:SetText(arg1 or DEFAULT)
+		module.frame:UpdateFont()
+	end
+
+	self.dropDownFont = ELib:DropDown(self.tab.tabs[2],350,10):Size(320):Point(200,-175):SetText(VMRT.RaidCheck.ReadyCheckFont or DEFAULT):AddText("|cffffce00"..L.cd2OtherSetFont..":")
+	self.dropDownFont.List[1] = {
+		text = DEFAULT,
+		arg1 = nil,
+		func = dropDownFontSetValue,
+		font = ExRT.F.defFont,
+		justifyH = "CENTER",
+	}
+	for i=1,#ExRT.F.fontList do
+		local info = {}
+		self.dropDownFont.List[i+1] = info
+		info.text = ExRT.F.fontList[i]
+		info.arg1 = ExRT.F.fontList[i]
+		info.func = dropDownFontSetValue
+		info.font = ExRT.F.fontList[i]
+		info.justifyH = "CENTER" 
+	end
+	for key,font in ExRT.F.IterateMediaData("font") do
+		local info = {}
+		self.dropDownFont.List[#self.dropDownFont.List+1] = info
+
+		info.text = key
+		info.arg1 = font
+		info.func = dropDownFontSetValue
+		info.font = font
+		info.justifyH = "CENTER" 
+	end
+
+	--[[
+	self.fontOutline = ELib:Check(self.tab.tabs[2],L.cd2OtherSetOutline,VMRT.RaidCheck.ReadyCheckFontOutline):Point("LEFT",self.dropDownFont,"RIGHT",5,0):OnClick(function(self) 
+		VMRT.RaidCheck.ReadyCheckFontOutline = self:GetChecked()
+		module:UpdateVisual()
+	end)
+	]]
+
+
+
+	self.chkReadyCheckFrameEditBoxTimer = ELib:Edit(self.tab.tabs[2],6,true):Size(50,20):Point(350,-210):Text(VMRT.RaidCheck.ReadyCheckFrameTimerFade or "4"):OnChange(function(self)
 		VMRT.RaidCheck.ReadyCheckFrameTimerFade = tonumber(self:GetText()) or 4
 		if VMRT.RaidCheck.ReadyCheckFrameTimerFade < 2.5 then VMRT.RaidCheck.ReadyCheckFrameTimerFade = 2.5 end
-	end) 
+	end):LeftText(L.raidcheckReadyCheckTimerTooltip)
 
 
-	self.chkReadyCheckFrameClassSort = ELib:Check(self.tab.tabs[2],L.RaidCheckSortByClass,VMRT.RaidCheck.ReadyCheckSortClass):Point(15,-175):OnClick(function(self) 
+	self.chkReadyCheckFrameClassSort = ELib:Check(self.tab.tabs[2],L.RaidCheckSortByClass,VMRT.RaidCheck.ReadyCheckSortClass):Point(15,-235):OnClick(function(self) 
 		if self:GetChecked() then
 			VMRT.RaidCheck.ReadyCheckSortClass = true
 		else
@@ -1197,6 +1250,10 @@ function module.options:Load()
 
 	self.chkReadyCheckConsumablesOnlyCuadFlask = ELib:Check(self.tab.tabs[3],L.RaidCheckOnlyCauldron,VMRT.RaidCheck.DisableNotCauldronFlask):Point("TOPLEFT",self.chkReadyCheckConsumables,"BOTTOMLEFT",0,-5):OnClick(function(self) 
 		VMRT.RaidCheck.DisableNotCauldronFlask = self:GetChecked()
+	end)
+
+	self.chkReadyCheckConsumablesDisableForRL = ELib:Check(self.tab.tabs[3],L.RaidCheckDisableForRL,VMRT.RaidCheck.ConsDisableForStarter):Point("TOPLEFT",self.chkReadyCheckConsumablesOnlyCuadFlask,"BOTTOMLEFT",0,-5):OnClick(function(self) 
+		VMRT.RaidCheck.ConsDisableForStarter = self:GetChecked()
 	end)
 
 	if ExRT.isClassic then
@@ -1283,7 +1340,8 @@ do
 		L_EncName = "^加固（%+[0-9]+ "
 		TimeLeftPatt = "（([^）]-)）$"
 	elseif ExRT.locale ~= "ruRU" and ExRT.locale ~= "enGB" and ExRT.locale ~= "enUS" then
-		L_EncName = "%(%+%d+[^%)]+%) %(%d+"
+		--L_EncName = "%(%+%d+[^%)]+%) %(%d+"
+		L_EncName = "%(%+%d+[^%)]+%) ?%(%d+"
 	end
 
 	function module:KitCheck()
@@ -1736,7 +1794,7 @@ function module.frame:UpdateCols()
 		RCW_iconsListDebugIcons[RCW_iconsList_ORIGIN+colsAdd] = 136210
 		local header = module.frame.headers[RCW_iconsList_ORIGIN+colsAdd]
 		if not header then
-			header = ELib:Text(module.frame.headers,"",10):Color(1,1,1):Point("BOTTOMLEFT",module.frame.headers[RCW_iconsList_ORIGIN+colsAdd-1],"BOTTOMLEFT",30,0)
+			header = ELib:Text(module.frame.headers,"",10):Color(1,1,1):Point("BOTTOMLEFT",module.frame.headers[RCW_iconsList_ORIGIN+colsAdd-1],"BOTTOMLEFT",30,0)--:Font(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,(VMRT.RaidCheck.ReadyCheckFontSize or 12)-2)
 			module.frame.headers[RCW_iconsList_ORIGIN+colsAdd] = header
 		end
 		header:SetText(RCW_iconsListHeaders[RCW_iconsList_ORIGIN+colsAdd])
@@ -1831,6 +1889,32 @@ function module.frame:Create()
 
 		line.mini = line_mini
 	end
+
+	self:UpdateFont()
+end
+
+function module.frame:UpdateFont()
+	if not self.isCreated then
+		return
+	end
+	for i=1,40 do
+		local line = self.lines[i]
+		line.name:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,VMRT.RaidCheck.ReadyCheckFontSize or 12)
+		line.mini.name:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,VMRT.RaidCheck.ReadyCheckFontSize or 12)
+
+		for i,key in pairs(RCW_iconsList) do
+			line[key].bigText:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,(VMRT.RaidCheck.ReadyCheckFontSize or 12)-2)
+		end
+	end
+	self.title:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,VMRT.RaidCheck.ReadyCheckFontSize or 12)
+	self.timeLeftLine.time:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRT.F.defFont,VMRT.RaidCheck.ReadyCheckFontSize or 12)
+	--[[
+	if self.headers then
+		for i=1,#self.headers do
+			self.headers[i]:SetFont(VMRT.RaidCheck.ReadyCheckFont or ExRTFontNormal:GetFont() or ExRT.F.defFont,(VMRT.RaidCheck.ReadyCheckFontSize or 12)-2)
+		end
+	end
+	]]
 end
 
 do
@@ -2314,7 +2398,7 @@ function module.frame:UpdateData(onlyLine)
 					elseif module.db.tableRunes[spellId] and line.rune then
 						local val = module.db.tableRunes[spellId]
 
-						line.rune.texture:SetTexture((spellId == 270058 or spellId == 317065) and 840006 or (spellId == 347901 and 134078) or icon)
+						line.rune.texture:SetTexture((spellId == 270058 or spellId == 317065) and 840006 or (spellId == 347901 and 134078) or (spellId == 367405 and 134078) or icon)
 						if val >= 18 then
 							line.rune.text:SetTextColor(0,1,0)
 							line.rune.text:SetText("")
@@ -2948,6 +3032,15 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 	module.consumables:Hide()
 	module.consumables.buttons = {}
 
+	module.consumables.rlpointer = CreateFrame("Frame",nil,UIParent)
+	module.consumables.rlpointer:SetSize(1,1)
+	module.consumables.rlpointer:SetPoint("CENTER")
+	module.consumables.rlpointer:Hide()
+
+	module.consumables.close = ELib:Button(module.consumables,CLOSE or 'x',"ExRTButtonModernTemplate,SecureHandlerClickTemplate"):Shown(false):Size(0,20):Point("TOPLEFT",module.consumables,"BOTTOMLEFT",0,-2):Point("TOPRIGHT",module.consumables,"BOTTOMRIGHT",0,-2)
+	module.consumables.close:SetFrameRef("rlpointer",module.consumables.rlpointer)
+	module.consumables.close:SetAttribute("_onclick",[[ self:GetFrameRef("rlpointer"):Hide() ]])
+
 	local function ButtonOnEnter(self)
 		self:GetParent():SetAlpha(.7)
 	end
@@ -2957,8 +3050,8 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 
 	module.consumables.state = CreateFrame('Frame', nil, nil, 'SecureHandlerStateTemplate')
 	module.consumables.state:SetAttribute('_onstate-combat', [=[
-		for i=1,7 do
-			if i == 2 or i == 3 or i == 4 or i == 5 or i == 7 then
+		for i=2,8 do
+			if i ~= 6 then
 				if self:GetFrameRef("Button"..i) then
 					if newstate == 'hide' then
 						self:GetFrameRef("Button"..i):Hide()
@@ -2973,7 +3066,7 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 	]=])
 	RegisterStateDriver(module.consumables.state, 'combat', '[combat] hide; [nocombat] show')
 
-	for i=1,7 do
+	for i=1,8 do
 		local button = CreateFrame("Frame",nil,module.consumables)
 		module.consumables.buttons[i] = button
 		button:SetSize(consumables_size,consumables_size)
@@ -3000,7 +3093,7 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		button.count:SetFont(button.timeleft:GetFont(),10,"OUTLINE")
 		--button.count:SetTextColor(0,1,0,1)
 
-		if i == 2 or i == 3 or i == 4 or i == 5 or i == 7 then
+		if i == 2 or i == 3 or i == 4 or i == 5 or i == 7 or i == 8 then
 			button.click = CreateFrame("Button",nil,button,"SecureActionButtonTemplate")
 			button.click:SetAllPoints()
 			button.click:Hide()
@@ -3040,11 +3133,16 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 			button.texture:SetTexture(463543)
 			module.consumables.buttons.oiloh = button
 			button:Hide()
+		elseif i == 8 then
+			button.texture:SetTexture(136051)
+			module.consumables.buttons.class = button
+			button:Hide()
 		end
 	end
 	
 	function module.consumables:Enable()
-		self:RegisterEvent("READY_CHECK","READY_CHECK_FINISHED")
+		self:RegisterEvent("READY_CHECK")
+		self:RegisterEvent("READY_CHECK_FINISHED")
 		self:Show()
 	end
 	function module.consumables:Disable()
@@ -3055,7 +3153,7 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 	local isElvUIFix
 
 	function module.consumables:Update()
-		if IsAddOnLoaded("ElvUI") and not isElvUIFix then
+		if (IsAddOnLoaded("ElvUI") or IsAddOnLoaded("ShestakUI")) and not isElvUIFix then
 			self:SetParent(ReadyCheckFrame)
 			self:ClearAllPoints()
 			self:SetPoint("BOTTOM",ReadyCheckFrame,"TOP",0,5)
@@ -3070,11 +3168,13 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 			end
 		end
 		local totalButtons = 6
-		if isWarlockInRaid then
-			self.buttons.hs:Show()
-		else
-			self.buttons.hs:Hide()
-			totalButtons = totalButtons - 1
+		if not InCombatLockdown() then
+			if isWarlockInRaid then
+				self.buttons.hs:Show()
+			else
+				self.buttons.hs:Hide()
+				totalButtons = totalButtons - 1
+			end
 		end
 
 		for i=1,#self.buttons do
@@ -3089,6 +3189,7 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		local now = GetTime()
 
 		local isFood, isRune, isFlask
+		local isShamanBuff
 
 		for i=1,60 do
 			local name,icon,count,dispelType,duration,expires,caster,isStealable,_,spellId = UnitAura("player", i, "HELPFUL")
@@ -3116,6 +3217,11 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 				self.buttons.rune.texture:SetDesaturated(false)
 				self.buttons.rune.timeleft:SetFormattedText(GARRISON_DURATION_MINUTES,ceil((expires-now)/60))
 				isRune = true
+			elseif spellId == 192106 then
+				isShamanBuff = format(GARRISON_DURATION_MINUTES,ceil((expires-now)/60))
+				if expires - now <= 600 then
+					isShamanBuff = false
+				end
 			end
 		end
 
@@ -3240,6 +3346,10 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 				lastWeaponEnchantItem = 171439
 			elseif mainHandEnchantID == 6199 then
 				lastWeaponEnchantItem = 171438
+			elseif mainHandEnchantID == 5401 then
+				lastWeaponEnchantItem = -33757
+			elseif mainHandEnchantID == 5400 then
+				lastWeaponEnchantItem = -318038
 			end
 		end
 		if offhandCanBeEnchanted and hasOffHandEnchant then
@@ -3265,6 +3375,12 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		elseif lastWeaponEnchantItem == 171438 then
 			self.buttons.oil.texture:SetTexture(3528425)
 			self.buttons.oiloh.texture:SetTexture(3528425)
+		elseif lastWeaponEnchantItem == -33757 then
+			self.buttons.oil.texture:SetTexture(462329)
+			self.buttons.oiloh.texture:SetTexture(135814)
+		elseif lastWeaponEnchantItem == -318038 then
+			self.buttons.oil.texture:SetTexture(135814)
+			self.buttons.oiloh.texture:SetTexture(135814)
 		end
 
 		VMRT.RaidCheck.WeaponEnch[ExRT.SDB.charKey] = lastWeaponEnchantItem
@@ -3273,7 +3389,22 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 			local oilCount = GetItemCount(lastWeaponEnchantItem,false,true)
 			self.buttons.oil.count:SetText(oilCount)
 			self.buttons.oiloh.count:SetText(oilCount)
-			if oilCount and oilCount > 0 then
+			if type(lastWeaponEnchantItem) == 'number' and lastWeaponEnchantItem < 0 then	--for spell enchants
+				if not InCombatLockdown() then
+					local spellName = GetSpellInfo(-lastWeaponEnchantItem)
+					self.buttons.oil.click:SetAttribute("spell", spellName)
+					self.buttons.oil.click:Show()
+					self.buttons.oil.click.IsON = true
+					self.buttons.oil.click:SetAttribute("type", "spell")
+					local spellName = GetSpellInfo(lastWeaponEnchantItem == -33757 and 318038 or -lastWeaponEnchantItem)
+					self.buttons.oiloh.click:SetAttribute("spell", spellName)
+					self.buttons.oiloh.click:Show()
+					self.buttons.oiloh.click.IsON = true
+					self.buttons.oiloh.click:SetAttribute("type", "spell")
+				end
+				self.buttons.oil.count:SetText("")
+				self.buttons.oiloh.count:SetText("")
+			elseif oilCount and oilCount > 0 then
 				if not InCombatLockdown() then
 					local itemName = GetItemInfo(lastWeaponEnchantItem)
 					if itemName then
@@ -3323,9 +3454,25 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		end
 
 		local runeCount = GetItemCount(181468,false,true)
-		if runeCount and runeCount > 0 then
+		local runeUnlim = GetItemCount(190384,false,true)
+		if runeUnlim and runeUnlim > 0 then
+			self.buttons.rune.count:SetText("")
+			if not InCombatLockdown() then
+				self.buttons.rune.texture:SetTexture(4224736)
+				local itemName = GetItemInfo(190384)
+				if itemName then
+					self.buttons.rune.click:SetAttribute("macrotext1", format("/stopmacro [combat]\n/use %s", itemName))
+					self.buttons.rune.click:Show()
+					self.buttons.rune.click.IsON = true
+				else
+					self.buttons.rune.click:Hide()
+					self.buttons.rune.click.IsON = false
+				end
+			end
+		elseif runeCount and runeCount > 0 then
 			self.buttons.rune.count:SetFormattedText("%d",runeCount)
 			if not InCombatLockdown() then
+				self.buttons.rune.texture:SetTexture(134078)
 				local itemName = GetItemInfo(181468)
 				if itemName then
 					self.buttons.rune.click:SetAttribute("macrotext1", format("/stopmacro [combat]\n/use %s", itemName))
@@ -3345,7 +3492,7 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		end
 
 		if LCG then
-			if runeCount and runeCount > 0 and not isRune then
+			if ((runeCount and runeCount > 0) or (runeUnlim and runeUnlim > 0)) and not isRune then
 				LCG.PixelGlow_Start(self.buttons.rune)
 			else
 				LCG.PixelGlow_Stop(self.buttons.rune)
@@ -3353,8 +3500,76 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 		end
 
 
+		local isClassShamanEnh
+		if select(2,UnitClass("player")) == "SHAMAN" and GetSpecialization() == 2 then
+			isClassShamanEnh = true
+		end
+
+		if isClassShamanEnh then
+			if isShamanBuff then
+				self.buttons.class.texture:SetDesaturated(false)
+				self.buttons.class.statustexture:SetTexture("Interface\\RaidFrame\\ReadyCheck-Ready")
+				self.buttons.class.timeleft:SetText(isShamanBuff)
+			else
+				self.buttons.class.texture:SetDesaturated(true)
+			end
+			if not InCombatLockdown() then
+				local spellName = GetSpellInfo(192106)
+				self.buttons.class.click:SetAttribute("type", "spell")
+				self.buttons.class.click:SetAttribute("spell", spellName)
+				self.buttons.class.click:Show()
+				self.buttons.class.click.IsON = true
+			end
+		end
+		if not InCombatLockdown() then
+			if isClassShamanEnh then
+				self.buttons.class.texture:SetTexture(136051)
+				self.buttons.class:Show()
+				totalButtons = totalButtons + 1
+				self.buttons.class:ClearAllPoints()
+				if isWarlockInRaid then
+					self.buttons.class:SetPoint("LEFT",self.buttons.hs,"RIGHT",0,0)
+				else
+					self.buttons.class:SetPoint("LEFT",self.buttons.rune,"RIGHT",0,0)
+				end
+			else
+				self.buttons.class:Hide()
+				self.buttons.class.click:Hide()
+				self.buttons.class.click.IsON = false
+			end
+		end
+
+
 		if not InCombatLockdown() then
 			self:SetWidth(consumables_size*totalButtons)
+		end
+	end
+
+	function module.consumables:Repos(isRL)
+		if InCombatLockdown() then
+			return
+		end
+		if isRL then
+			self:SetParent(self.rlpointer)
+			self:ClearAllPoints()
+			self:SetPoint("CENTER",self.rlpointer,"CENTER",0,0)
+
+			self.rlpointer:Show()
+			self.close:Show()
+
+			self.isRLpos = true
+		elseif self.isRLpos then
+			local parent
+			if isElvUIFix then
+				parent = ReadyCheckFrame
+			else
+				parent = ReadyCheckListenerFrame
+			end
+			self:SetParent(parent)
+			self:ClearAllPoints()
+			self:SetPoint("BOTTOM",parent,"TOP",0,5)
+
+			self.isRLpos = false
 		end
 	end
 
@@ -3378,9 +3593,22 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 			self.cancelDelay = C_Timer.NewTimer(arg2 or 40,function()
 				self:UnregisterEvent("UNIT_AURA")
 				self:UnregisterEvent("UNIT_INVENTORY_CHANGED")
+
+				if self.isRLpos then
+					self.rlpointer:Hide()
+				end
 			end)
+			if arg1 and UnitIsUnit(arg1,"player") and not VMRT.RaidCheck.ConsDisableForStarter then
+				self:Repos(true)
+			else
+				self:Repos()
+			end
 		elseif event == "READY_CHECK_FINISHED" then
 			module.consumables:OnHide()
+
+			if self.isRLpos then
+				self.rlpointer:Hide()
+			end
 		elseif event == "UNIT_AURA" then
 			if arg1 == "player" then
 				self:Update()
@@ -3396,13 +3624,17 @@ if (not ExRT.isClassic) and UnitLevel'player' >= 60 then
 
 	module.consumables:SetScript("OnHide",function(self)
 		module.consumables:OnHide()
+
+		if not InCombatLockdown() and self.close:IsShown() then
+			self.close:Hide()
+		end
 	end)
 
-	module.consumables.Test = function()
-		module.consumables:SetParent(UIParent)
-		module.consumables:ClearAllPoints()
-		module.consumables:SetPoint("CENTER")
-		module.consumables:GetScript("OnEvent")(module.consumables,"READY_CHECK")
+	module.consumables.Test = function(isRL)
+		--module.consumables:SetParent(UIParent)
+		--module.consumables:ClearAllPoints()
+		--module.consumables:SetPoint("CENTER")
+		module.consumables:GetScript("OnEvent")(module.consumables,"READY_CHECK",isRL and UnitName'player' or "")
 	end
 	--/run GMRT.A.RaidCheck.consumables.Test()
 end

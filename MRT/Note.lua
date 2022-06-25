@@ -307,6 +307,7 @@ local function GSUB_Time(preText,t,msg,newlinesym)
 	local now = GetTime()
 	local waEventID
 	local addGlow
+	local isAllParam
 	
 	local optNow
 	while opts do
@@ -329,11 +330,11 @@ local function GSUB_Time(preText,t,msg,newlinesym)
 				end
 			end
 		elseif optNow:sub(1,1) == "p" then
-			local phase = optNow:sub( optNow:sub(2,2) == ":" and 3 or 2 )
-			if phase then
+			local isGlobalPhase,phase = optNow:match("^p(g?):?(.-)$")
+			if phase and phase ~= "" then
 				local prefixText = "P"..phase.." "
 
-				local phaseStart = encounter_time_p[phase]
+				local phaseStart = encounter_time_p[(isGlobalPhase == "g" and "g" or "")..phase]
 
 				if phaseStart then
 					time = phaseStart + time - now
@@ -346,6 +347,9 @@ local function GSUB_Time(preText,t,msg,newlinesym)
 			addGlow = 1
 		elseif optNow == "glowall" then
 			addGlow = 2
+			isAllParam = true
+		elseif optNow == "all" then
+			isAllParam = true
 		else
 			local prefix, arg1 = strsplit(":", optNow, 2)
 			if prefix == "wa" then
@@ -381,6 +385,10 @@ local function GSUB_Time(preText,t,msg,newlinesym)
 				end
 			end
 		end
+	end
+
+	if not msg:find(MRT.SDB.charName) and VMRT.Note.TimerOnlyMy and not isAllParam then
+		return ""
 	end
 
 	if time > 10 or not module.db.encounter_time or anyType == 2 then
@@ -489,9 +497,11 @@ do
 				:gsub("{(!?)[Pp]([^}:][^}]*)}(.-){/[Pp]}",GSUB_Phase)
 				:gsub("{icon:([^}]+)}","|T%1:16|t")
 				:gsub("{spell:(%d+):?(%d*)}",GSUB_Icon)
-				:gsub("%b{}",GSUB_RaidIcon)
+				--:gsub("%b{}",GSUB_RaidIcon)
+				:gsub("%b{}",allIcons)
 				:gsub("||([cr])","|%1")
-				:gsub("[^ \n,]+",GSUB_AutoColor)
+				--:gsub("[^ \n,]+",GSUB_AutoColor)
+				:gsub("[^ \n,%(%)%[%]_%$#@!&]+",GSUB_AutoColor_Data)
 				:gsub("\n+$", "")
 	
 			preTimerText = t
@@ -514,6 +524,29 @@ function module.options:Load()
 		106898,192077,46968,119381,179057,192058,30283,0,
 		29166,32375,114018,108199,49576,0,
 		0,
+		367555,367571,360403,360202,360528,361001,366822,367342,359608,366692,367561,364962,360414,360176,364904,363447,364447,360412,0,
+		359770,359778,364522,359981,364778,359913,360098,359976,367486,360448,359829,360193,359904,360411,366070,0,
+		364040,362849,364373,365752,365801,365745,362885,363413,365577,362801,363485,363114,362841,362837,362721,365681,0,
+		360959,365373,363607,361643,361722,361966,365418,361651,361513,361967,361214,362432,0,
+		361278,361689,361783,361784,366062,365272,361608,361568,364865,361305,360259,365041,362352,361788,361066,362383,366234,360687,361067,366159,361579,360295,365306,361741,0,
+		368740,368024,364312,364073,362659,368738,365307,366001,368750,360159,363088,368027,368751,363681,0,
+		368671,359720,365975,368820,365294,368961,362025,369210,367079,359236,362056,368529,362129,361597,359235,360115,368958,360114,368957,368965,361676,361324,0,
+		366849,368913,362771,365008,363024,365293,365120,368428,365216,361815,363028,367769,365958,365030,367771,363031,362543,362055,368986,362702,365805,367932,364247,364020,362405,365445,365816,363020,365177,364031,362862,362391,361989,0,
+		359960,360418,361945,360148,361923,360319,360420,360304,360374,360229,360241,361913,362158,360145,359963,362585,363184,360428,361934,362152,360300,363191,360006,360417,364985,0,
+		364114,363533,363115,366379,363109,366992,362172,362273,364381,364386,361553,362088,364432,366606,362081,364569,368080,362384,362206,362275,361462,361548,361463,362184,362390,0,
+		366408,360565,366377,360282,363952,360425,365371,365151,365419,366381,362617,362192,366776,366777,362194,362415,365219,366401,365174,365033,365810,366782,359868,365385,366665,362058,360373,366030,365153,363886,362075,362189,366285,363893,367053,362631,0,
+		0,
+		347369,352398,347283,347490,347269,346986,352368,347671,346985,352389,347668,352382,347286,347274,0,
+		350847,350763,348074,349028,350803,349979,355245,351401,350828,351994,348054,350604,348969,350713,350028,355246,355232,355240,351826,0,
+		350482,350157,350475,350283,350206,350555,350098,350385,350184,351399,350687,350467,350339,350287,350031,350039,350109,350365,352744,350202,0,
+		349889,350388,349890,350671,350469,351066,350073,350076,350490,0,
+		350650,351779,350422,350801,353554,350648,350217,351946,349985,350851,351229,348985,354231,353429,0,
+		355568,348255,348463,355504,355786,348508,348363,355778,0,
+		352660,352394,352833,350734,352538,352589,356090,352385,356093,355352,347359,350732,0,
+		353195,353160,350826,353122,353696,350355,353149,353603,353162,354964,354365,351969,353435,353432,353931,351680,0,
+		348428,355055,352002,354103,347291,348756,355127,352348,352051,352090,354206,352355,352144,355935,349805,352293,348953,348744,352379,346459,355948,352530,348071,348978,354289,0,
+		355540,347807,348627,351179,351117,348109,350598,351670,347670,353955,351451,351562,347609,347704,353642,352650,348146,354147,351092,355849,351109,347928,353929,356024,347504,354070,349458,350857,348145,347607,350746,351869,356023,353413,350865,351075,355827,0,
+		0,
 		341489,345397,328897,343365,340324,342923,328857,328921,345425,343005,342863,341684,330711,342074,0,
 		334695,338609,345902,334797,334960,334852,334860,334504,334884,334404,334893,334971,334708,338615,343259,335114,334757,339639,338593,335303,0,
 		333145,337865,325442,328248,325590,325877,341308,335581,328885,329561,325665,328731,329509,335598,326430,341473,326078,333002,328254,329539,336398,326455,329470,323402,339251,326456,328579,343026,325440,0,
@@ -525,20 +558,12 @@ function module.options:Load()
 		334765,333913,344740,342733,334929,333387,343881,336212,332683,339728,343086,343898,339690,344655,342425,342256,336231,342985,339645,343063,340038,334771,342741,332412,339693,339885,329636,342253,0,
 		332734,341366,338689,330137,344313,338738,330627,330580,338582,326707,327227,327842,335875,329906,326851,332585,344776,327089,332797,328098,340685,332619,326823,338683,338510,327123,326824,330871,329974,341391,326699,338685,328936,336008,335873,329785,327992,328839,328276,338687,336162,327796,0,
 	}
-	if MRT.is91 then
-		MRT.F.table_add(module.db.otherIconsAdditionalList,{
-			0,
-			347369,352398,347283,347490,347269,346986,352368,347671,346985,352389,347668,352382,347286,347274,0,
-			350847,350763,348074,349028,350803,349979,355245,351401,350828,351994,348054,350604,348969,350713,350028,355246,355232,355240,351826,0,
-			350482,350157,350475,350283,350206,350555,350098,350385,350184,351399,350687,350467,350339,350287,350031,350039,350109,350365,352744,350202,0,
-			349889,350388,349890,350671,350469,351066,350073,350076,350490,0,
-			350650,351779,350422,350801,353554,350648,350217,351946,349985,350851,351229,348985,354231,353429,0,
-			355568,348255,348463,355504,355786,348508,348363,355778,0,
-			352660,352394,352833,350734,352538,352589,356090,352385,356093,355352,347359,350732,0,
-			353195,353160,350826,353122,353696,350355,353149,353603,353162,354964,354365,351969,353435,353432,353931,351680,0,
-			348428,355055,352002,354103,347291,348756,355127,352348,352051,352090,354206,352355,352144,355935,349805,352293,348953,348744,352379,346459,355948,352530,348071,348978,354289,0,
-			355540,347807,348627,351179,351117,348109,350598,351670,347670,353955,351451,351562,347609,347704,353642,352650,348146,354147,351092,355849,351109,347928,353929,356024,347504,354070,349458,350857,348145,347607,350746,351869,356023,353413,350865,351075,355827,0,
-		})
+	if MRT.isBC then
+		module.db.otherIconsAdditionalList = {
+			26983,2825,32182,16190,0,0,
+			38219,38215,36459,38246,37478,37138,37675,37640,37641,38441,38445,37764,38316,38310,38509,38280,0,
+			34172,25778,34162,39329,42783,11829,36834,36815,34480,30225,37027,36723,35879,"135188","135507","135379","132455","133528","135682","134976",0,
+		}
 	end
 
 	function self:DebugGetIcons(notUseJJBox)
@@ -661,6 +686,22 @@ function module.options:Load()
 		[1747] = {2417,2407},
 		[1748] = 2407,
 		[1750] = 2412,
+
+		--sod
+		[1998] = 2423,
+		[1999] = {2433,2429},
+		[2000] = {2432,2434,2430},
+		[2001] = {2436,2431,2422},
+		[2002] = 2435,
+
+		--sotfo
+		[2047] = 2512,
+		[2048] = 2540,
+		[2049] = {2544,2539},
+		[2061] = {2542,2553,2529},
+		[2050] = 2546,
+		[2052] = {2543,2549},
+		[2051] = 2537,
 	}
 
 
@@ -1075,6 +1116,7 @@ function module.options:Load()
 	ELib:DecorationLine(self.tab.tabs[1]):Point("TOP",0,-129-40):Point("LEFT",self.NotesList,"RIGHT",0,0):Point("RIGHT",'x',0,0):Size(0,1)
 
 	local IsFormattingOn = VMRT.Note.OptionsFormatting
+	local IconsFormattingList = {}
 	self.optFormatting = ELib:Check(self.tab.tabs[1],FORMATTING,VMRT.Note.OptionsFormatting):Point("TOPLEFT",self.NotesList,"TOPRIGHT",15,-41):Size(15,15):OnClick(function(self) 
 		if self:GetChecked() then
 			VMRT.Note.OptionsFormatting = true
@@ -1109,10 +1151,35 @@ function module.options:Load()
 	ELib:Border(self.NoteEditBox,0)
 
 
+	local function GSUB_Icon_Options(unformatted,spellID,iconSize)
+		local iconText
+		spellID = tonumber(spellID)
+	
+		if not iconSize or iconSize == "" then
+			iconSize = 0
+		else
+			iconSize = min(tonumber(iconSize),40)
+		end
+	
+		local preicon = predefSpellIcons[spellID]
+		if preicon then
+			iconText = "|T"..preicon..":"..iconSize.."|t"
+		else
+			local spellTexture = select(3,GetSpellInfo(spellID))
+			iconText = "|T"..(spellTexture or "Interface\\Icons\\INV_MISC_QUESTIONMARK")..":"..iconSize..":"..iconSize..":-6:0|t"
+		end
+
+		IconsFormattingList[iconText] = unformatted
+	
+		return iconText
+	end
+
 	self.NoteEditBox.EditBox._SetText = self.NoteEditBox.EditBox.SetText
 	function self.NoteEditBox.EditBox:SetText(text)
 		if IsFormattingOn then
+			--wipe(IconsFormattingList)
 			text = text:gsub("||([cr])","|%1")
+				--:gsub("({spell:(%d+):?(%d*)})",GSUB_Icon_Options)
 		end
 		return self:_SetText(text)
 	end
@@ -1125,6 +1192,7 @@ function module.options:Load()
 		local text = self:GetText()
 		if IsFormattingOn then
 			text = text:gsub("|([cr])","||%1")
+				--:gsub("|T.-|t",IconsFormattingList)
 		end
 		if NoteIsSelfNow then
 			VMRT.Note.SelfText = text
@@ -1208,6 +1276,13 @@ function module.options:Load()
 					return ""
 				end
 			end)
+			if MRT.isBC and MRT.locale == "ruRU" then	--fix bug for icons on ru client
+				text = text:gsub("%b{}",function(p)
+					if p and p:match("^{rt%d}$") then
+						return module.db.iconsLocalizatedNames[tonumber(p:match("%d+") or "") or 0]
+					end
+				end)
+			end
 
 			local lines = {strsplit("\n", text)}
 			for i=1,#lines do
@@ -1688,6 +1763,15 @@ function module.options:Load()
 		else
 			VMRT.Note.TimerGlow = nil
 		end
+	end):Shown(not MRT.isClassic)
+
+	self.chkTimersOnlyMy = ELib:Check(self.tab.tabs[2],L.NoteTimersOnlyMy,VMRT.Note.TimerOnlyMy):Point("TOPLEFT",self.chkTimersGlow,"BOTTOMLEFT",0,-5):OnClick(function(self) 
+		if self:GetChecked() then
+			VMRT.Note.TimerOnlyMy = true
+		else
+			VMRT.Note.TimerOnlyMy = nil
+		end
+		module.frame:UpdateText()
 	end):Shown(not MRT.isClassic)
 
 	local testGlowDelay
@@ -2353,12 +2437,15 @@ do
 
 			BossPhasesBossmodAdded = true
 		elseif type(DBM)=='table' and DBM.RegisterCallback then
-			DBM:RegisterCallback("DBM_SetStage", function(event, addon, modId, stage, encounterId)
+			DBM:RegisterCallback("DBM_SetStage", function(event, addon, modId, stage, encounterId, globalStage)
 				if stage then
 					wipe(encounter_time_p)
 					local t = GetTime()
 					encounter_time_p[stage] = t
 					encounter_time_p[tostring(stage)] = t
+					if globalStage then
+						encounter_time_p["g"..tostring(globalStage)] = t
+					end
 					if module.frame:IsShown() then
 						module.frame:UpdateText()
 					end

@@ -1,10 +1,10 @@
-lightweight tag c653865e924d3666b0bcd828f8b605709cc36e37 v9.2.0
+lightweight tag b747ea1222ee0403c5b4e5528ffe32791dfadcda 9.2.5-01
 Author:	Dave Hendler <sollaires@gmail.com>
-Date:	Tue Feb 22 10:58:35 2022 -0800
+Date:	Mon Jun 6 10:28:06 2022 -0700
 
-commit c653865e924d3666b0bcd828f8b605709cc36e37
+commit b747ea1222ee0403c5b4e5528ffe32791dfadcda
 Author: Dave Hendler <sollaires@gmail.com>
-Date:   Tue Feb 22 10:58:35 2022 -0800
+Date:   Mon Jun 6 10:28:06 2022 -0700
 
-    Update version for 9.2 release
+    Use newer BigWigs packager
 

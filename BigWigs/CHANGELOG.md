@@ -1,6 +1,11 @@
 # BigWigs
 
-## [v241.4](https://github.com/BigWigsMods/BigWigs/tree/v241.4) (2022-05-12)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v241.3...v241.4) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v243](https://github.com/BigWigsMods/BigWigs/tree/v243) (2022-06-01)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v242.3...v243) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- Sepulcher/AnduinWrynn: Healer only initial DW:Pain bars  
+- bump version  
+- bump toc  
+- Workflow: move to checkout@v3  
+- Core/BossPrototype: Shiv dispels enrage effects (#1231)  
+- Update ptBR (#1229)  
+- SepulcherOfTheFirstOnes: Locale fix (#1228)  

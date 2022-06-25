@@ -17,7 +17,7 @@ Special thanks:
 		Andyca, and BNSSNB (Traditional Chinese Translations)
 		Phalk and Omukeka (Brazilian Portuguese Translations)
 		Asixandur (Italian Translations)
-		Arith (LibUIDropDownMenu)
+		LantisNT (Controller vibration support)
 
 Change Log:
 
@@ -1593,3 +1593,153 @@ Change Log:
 4.59
 * Fixed dropdown library issues with Classic
 * Added SL spells for Castle Nathria
+
+4.59.1
+* Renamed files for CurseForge updater
+* Added SL spells for Torghast
+
+4.59.2
+* Added Shadowlands spells (world)
+* Added SL spells for Castle Nathria
+
+4.60
+* Removed LibStub and LibUIDropDownMenu and replaced the sound channel selector with a slider
+* Added SL spells for Castle Nathria
+
+4.61
+* Added an additional debugging mode to try to track down difficult issues
+* Fixed SL spells for Castle Nathria
+
+4.62
+* Updated for patch 9.0.5
+* Improved additional debugging mode
+
+4.62.1
+* Added Shadowlands spells (world)
+* Added SL spells for Castle Nathria
+
+4.63
+* Updated ToC for WoW Classic 1.13.7
+* Added support and updated ToC for WoW TBC 2.5.1
+* Added SL spells for Sanctum of Domination
+
+4.63.1
+* Updated for patch 9.1
+* Added Shadowlands spells (world)
+* Added SL spells for Sanctum of Domination
+* Added SL spells for Tazavesh, the Veiled Market
+
+4.63.2
+* Added Shadowlands spells (world)
+* Added SL spells for Sanctum of Domination
+
+4.63.3
+* Added Shadowlands spells (world)
+* Added SL spells for Sanctum of Domination
+
+4.63.4
+* Added Shadowlands spells (world)
+* Added SL spells for Sanctum of Domination
+* Added Burning Crusade spells for Hellfire Ramparts
+* Added Burning Crusade spells for Arcatraz
+
+4.63.5
+* Added SL spells for Tazavesh, the Veiled Market
+
+4.63.6
+* Fixed SL spells for Tazavesh, the Veiled Market
+* Added SL spells for Tazavesh, the Veiled Market
+
+4.63.7
+* Added Shadowlands spells (world)
+* Added SL spells for Torghast
+* Added SL spells for Sanctum of Domination
+
+4.64
+* Don't alert when the player is mind-controlled
+* Fixed SL spells for Sanctum of Domination
+* Added Shadowlands spells (world)
+* Added SL spells for Sanctum of Domination
+* Added SL spells for Torghast
+
+4.64.1
+* Updated ToCs for all versions
+* Added SL spells for Sanctum of Domination
+
+4.64.2
+* Added Generic spells
+
+4.64.3
+* Added Shadowlands spells (world)
+* Added SL spells for Mists of Tirna Scithe
+* Added SL spells for Theater of Pain
+* Added SL spells for Torghast
+* Added SL spells for Sanctum of Domination
+* Added BC spells for Magtheridon's Lair
+* Added BC spells for The Eye
+* Added BC spells for Serpentshrine Cavern
+
+4.65
+* Updated for patch 9.1.5
+* Fixed BC spells for Magtheridon's Lair
+* Added BC spells for The Eye
+* Added BC spells for Serpentshrine Cavern
+* Added BC spells for Sunwell Plateau
+* Added Vanilla spells for Maraudon
+
+4.65.1
+* Updated ToCs using the new naming system
+* Added BC spells for Sunwell Plateau
+
+4.65.2
+* Fixed BC spells for Serpentshrine Cavern
+
+4.65.3
+* Updated ToCs to latest for Vanilla & BC
+* Fixed BC spells for Serpentshrine Cavern
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+* Added BC spells for Black Temple
+
+4.65.4
+* Updated for patch 9.2
+* Added SL spells for Sepulcher of the First Ones
+* Added BC spells for Black Temple
+
+4.66
+* Added controller vibration support - Thanks LantisNT
+* Added support for custom sounds by Blizzard Sound ID #
+* Added Shadowlands spells (world)
+* Added BC spells for Black Temple
+
+4.66.1
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+
+4.66.2
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+
+4.66.3
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+
+4.66.4
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+* Fixed BC spells for Black Temple
+
+4.66.5
+* Added Shadowlands spells (world)
+* Added SL spells for Sepulcher of the First Ones
+* Added SL spells for Torghast
+* Added Cataclysm spells for Zul'Aman
+
+4.66.6
+* Fixed BC ToC
+
+4.67
+* Updated for patch 9.2.5
+* Added support for targeting specific Mythic+ key thresholds
+* Added Shadowlands spells (world)
+* Added SL spells for De Other Side
