@@ -1,0 +1,934 @@
+# AdiBags
+
+## [](https://github.com/AdiAddons/AdiBags/tree/dd415b1a2dd802d23d69511b2728fa8decf34506) (2022-05-20)
+[Full Changelog](https://github.com/AdiAddons/AdiBags/commits/dd415b1a2dd802d23d69511b2728fa8decf34506) 
+
+- Added GitHub actions for packaging and releases.  
+- Updated for Patch 9.1.5.  
+- Updated for Patch 9.1: Chains of Domination.  
+- Disembedded BugGrabber.  
+    Fixes #266 & closes #472.  
+- ItemButtons: Fixed support for Pawn (third-party addon).  
+    Pawn doesn't define its function until after it's been loaded. Therefore, adding it as an optional dependency won't suffice.  
+- ItemButtons: Added support for Pawn (third-party addon).  
+    Fixes #503 & closes #504.  
+- Updated for Patch 9.0.5.  
+- Added an option to show the levels of caged battle pets.  
+    Merges #498:  
+    * Refactors UpdateButton to split item logic from the display logic. This was necessary due to multiple changes over the years that have added up and the initial assumption that only items are in your bags.  Things that aren't items include Battle Pet Cages added in Mists of Pandaria and Mythic Keystones added in Legion.  
+    Co-authored-by: legowxelab2z8 <legowxelab2z8@gmail.com>  
+- Updated for Patch 9.0.2, the second Shadowlands pre-expansion patch.  
+- Fixed item icons from overlapping within the Options UI.  
+    * Fix for overlapping icons in Manual Filter configuration  
+    Setting the width to 'full' instead of leaving it unspecified avoids triggering a bug in AceConfig where the height of a widget is used before the widget width is resized causing the height to be recalculated.  
+    * Fix for overlapping icons in Junk Filter configuration  
+    Applied width = 'full' to the ItemLists in the junk.lua AceConfig options table. This works around a bug with widgets that use flow layout and resize as elements are added/removed or as the widget width is resized.  
+- Updated koKR localization.  
+    The script that imports localization updates from WowAce has been broken for several years.  
+- Updated links in README.  
+- Updated for Patch 9.0.1, the Shadowlands pre-expansion patch.  
+    Closes: #471, #475, #477, #486, #487, #488.  
+    Co-Authored-By: Handante <8237662+BourgeoisM@users.noreply.github.com>  
+    Co-Authored-By: RipeTomatoe <4926850+RipeTomatoe@users.noreply.github.com>  
+    Co-Authored-By: Tim Martin <tim@timmart.in>  
+    Co-Authored-By: legowxelab2z8 <26781468+legowxelab2z8@users.noreply.github.com>  
+- Junk: Fixed support for Scrap.  
+    Fixes #416.  
+    Co-authored-by: veyh <veyh@users.noreply.github.com>  
+    Co-authored-by: Talyrius <contact@talyrius.net>  
+- Fixed sorting of Bank and Reagent Bank.  
+    Fixes #414. SortBankBags() and SortReagentBankBags() can no longer be called in succession.  
+- ItemLevel: Updated item level ranges for Season 4.  
+- Updated for Patch 8.3: Visions of N'Zoth.  
+- Updated for Patch 8.2.5.  
+- ItemLevel: Updated item level ranges for Season 3.  
+- Updated for Patch 8.2: Rise of Azshara.  
+- Fixed another error related to the ItemButtonTemplate changes.  
+    Fixes #339.  
+- ItemLevel: Updated item level ranges for Season 2.  
+- Updated for Patch 8.1.5: Tides of Vengeance.  
+    Fixes #332.  
+    Co-Authored-By: Manabender <manabender@users.noreply.github.com>  
+    Co-Authored-By: semlar <semlar@users.noreply.github.com>  
+    Co-Authored-By: Nicholas Karasch <nkarasch@gmail.com>  
+- Update .pkgmeta again (Oops!).  
+- Update .pkgmeta.  
+- Updated for Patch 8.1: Tides of Vengeance.  
+- Fixed the dimming of junk items.  
+    Merges pull request #284 from @Breavyn.  
+- ItemLevel: Updated item level ranges to reflect the squish.  
+- Fix for strmatch errors with empty call stack in BugGrabber handling (#293)  
+    Fixes #289.  
+- Eliminated LibItemUpgradeInfo-1.0 as a dependency.  
+- ItemLevel: added item level range for level 120 characters.  
+- Updated for Patch 8.0.1: Battle for Azeroth.  
+- Stopped registering events that no longer exist.  
+    Partially merges #263.  
+    Co-Authored-By: kaqualls <kaqualls@users.noreply.github.com>  
+- Updated previously deprecated functions to use the new C\_EquipmentSet API.  
+    Fixes #177 and #185. Partially merges #263.  
+    Co-Authored-By: kaqualls <kaqualls@users.noreply.github.com>  
+- Fixed sorting "By quality and item level."  
+    Fixes #140.  
+- Fixed interactivity with merged item stacks.  
+    Fixes #188; caused by b4c8337. Bag sorting will now be performed while closed.  
+- Fixed lack of color in new item glow.  
+    Merge pull request #238 from AcidWeb/ElvUI-AdiBags.  
+- Pull request #219 omitted some PlaySound calls.  
+    Fixes #222.  
+- Updated for Patch 7.3: Shadows of Argus.  
+    Fixes #217.  
+- Let CurseForge packages AdiBags directly from Github.  
+- Fixed quality colored borders for keystones and battle pets.  
+    Fixes #181.  
+- Excluded bank and reagent bank containers from item upgrade checks.  
+    Fixes #174.  
+- Updated for Patch 7.2: The Tomb of Sargeras.  
+- Implemented item upgrade indicators.  
+    Merge pull request #160 from p5hema2/IsContainerItemAnUpgrade. Fixes #151.  
+- Fixed problems resulting from the recent patch changes to Mythic Keystones.  
+    Merge pull request #172 from legowxelab2z8/MythicKeystones. Fixes #169.  
+- fix for wow freezing on blizzard sort  
+- ItemLevel: significantly increased the "Mininum level" range.  
+- Updated for Patch 7.1: Return to Karazhan.  
+- Eliminated LibBabble-Inventory-3.0 as a dependency.  
+    Fixes #129.  
+- Junk: added Dalaran Hearthstone to the exclusion list.  
+    Fixes #109.  
+- ItemLevel: added item level range for level 110 characters.  
+    Fixes #106.  
+- Update README.textile  
+    Removed obsolete comments.  
+- Merge pull request #91 from Cidan/master  
+    Bug Fixes  
+- More trailing whitespace removed.  
+- Fixed Gitter webhook.  
+- Removed trailing whitespaces.  
+- Fixed whitespaces.  
+- CI: do not fail on globals.  
+- Setup SSH.  
+- Added badges to README.  
+- Setting up travis CI.  
+- offset currency icons slightly  
+- Updated Config TOC  
+- Fix for Tradeskill, again.  
+- Removed misleading tooltip  
+- Bags re-layout on open and not on item destroy.  
+- Fixed a bug where layout was not updated upon item removal.  
+- Fixed items not updating when swapping equipment out.  
+- Fix for tradeskills subcat splitting.  
+- Possible fix for SetPoint bug, fix for some BR translations.  
+- Moved some more state code into the container proto.  
+- Moved container picking logic into local state variables for each call instead of a local state for entire file.  
+- Merge branch 'Legion' of https://github.com/kaqualls/AdiBags  
+- Merge pull request #57 from amyloid/feature/issue-53-fix-bag-updates-on-level-up  
+    Don't erroneously mark items with changed character level in link for…  
+- Merge pull request #67 from sbWoW/master  
+    Fix for #41  
+- Merge pull request #77 from kaqualls/master  
+    Increase prespawned buttons  
+- Merge pull request #78 from Cidan/master  
+    Updated for Legion  
+- A real fix for alpha  
+- Updated for Legion  
+- Increase prespawned buttons  
+    160 should be the maximum possible number of bag slots currently.  Four  
+    36 slot profession bags plus the 16 slot backpack.  
+- SetChange function removed in 7.0  
+- add garrison hearthstone and innkeeper's daughter to junk exclude list, fix #41  
+- Merge branch 'master' of https://github.com/Adirelle/AdiBags  
+- Fix regexp to match all parts of the link  
+- Don't erroneously mark items with changed character level in link for removal.  
+    Fixes GH-53.  
+- Systemically move updated items to the "Recent items" section.  
+- Register LibSharedMedia callbacks to update the fonts, borders and backgrounds.  
+- Hook BankFrame:GetRight() to prevent an error in UpdateContainerFrameAnchors.  
+    Fixes GH-27.  
+- Show the reagent bank with a different color.  
+    Fixes GH-20.  
+- Reworked the tooltip and click handler of the section "recent items".  
+- Removed the auto-sort feature, since it causes too much mess with the recent items.  
+- Bag layout: avoid putting a very high section at the bottom of a column.  
+    Should fix GH-12.  
+- Bag layout: take the highest section into account when calculating the bag height.  
+- Send ContentUpdate events in RedispatchAllItems.  
+    Might help with GH-7.  
+- Enforce a full update on set switching.  
+    Fixes GH-13.  
+- Fix GH-8.  
+- Do not oversize the currency frame.  
+    Should fix #10. Thanks @arhra.  
+- Ensure the bag is tall enough to contain the tallest section.  
+- Fit each column to its actual content.  
+- Internally replaced the rowWidth setting by columnWidth.  
+    This ensures it is properly reset.  
+- Revamped the "bags" configuration section.  
+- Added an option for a more compact layout.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Trying a slightly more compact layout.  
+- Update README.textile  
+- Update README.textile  
+- Updated locales.  
+- Fixed #238.  
+- README typo, spelling and grammar.  
+- README.textile updated.  
+- Switched to GPL v3.  
+- Container: force full layout after sorting the bags.  
+- Config: reset column width to default when upgrading from previous settings.  
+- Config: changed width defaults.  
+- Config: renamed "Maximum row width" to "Column width".  
+- Force a full layout of the "Recent Items" section on resize.  
+- Fixed error line 183 in NewItemTracking.lua.  
+- Changed the default column widths.  
+- Enable the "N" when they are items in the "recent items" button.  
+- Fixed an error happening in NewItemTracking when updating the buttons.  
+- Renamed the "to sort" section to "recent items", and assign new items to it.  
+- Properly resize the "to sort" section.  
+- Changed the range and step of the width configuration slider.  
+- NewItems: properly clear the highlight when clicking the "N" button.  
+- Do not force a full layout on new items.  
+- Properly resize the sections on acquire/when empty.  
+- Stack normally-non-stackable items by their ids.  
+- Container: do not existing button to the "to sort" section.  
+- NewItems: made the "new item" flag item-based and persistent.  
+- Container: never show free slots in "to sort".  
+- Container: the "to sort" section is now sticky.  
+- Container: properly show/hide/resize the "to sort" section.  
+- Container: promote "UpdateButtons" to "FullUpdate" if self.forceLayout is true.  
+- containerProto:RedispatchAllItems is now independant of UpdateButtons.  
+- Properly update the two ends of the ItemButton-Section association.  
+- Tweaked the column-splitting algorithm.  
+- Fixed the [S]ort button.  
+- Fixed the reagent tab switching.  
+- Removed a bunch of now-useless event handlers.  
+- R.I.P. "automatic layout" setting.  
+- Refactored the layout process.  
+- Typo.  
+- Layout: strictly respect the section ordering.  
+- Merge branch 'master' into layout-revamp  
+- EventHandlers: return a string handle based on the received table.  
+- EventHandlers: return a string handle based on the received table.  
+- Merge branch 'master' into layout-revamp  
+- Fixed error in EventHandlers.lua line 92.  
+- Updated the tooltips of the [D]eposit and [S]ort buttons.  
+- Do not autodeposit when a modifier key is pressed while talking to the banker.  
+    Fixes #229.  
+- Right-click now properly moves items to the reagent bank when it is shown.  
+- Refactored then event bucketing lib.  
+- Fixed the error in EventHandlers.lua line 123.  
+- Replaced AceEvent-3.0 and AceBucket-3.0 by an homebrew implementation.  
+- Column-based layout.  
+- Missing comma, whoopsy.  
+- ItemLevel: added item level range for level 100 characters.  
+    Fixes #222.  
+- Fixes #221.  
+- That code was not dead enough, finally.  
+- Removed dead code.  
+- Fixed the highlight color for improved rewards, really.  
+- Use the item link, instead of its identifier, to get its quality.  
+- Use an new internal message to force rescanning of bags.  
+- Fixed stack splitting for stacks in the reagent bank.  
+    Fixes #218.  
+- Post-pone ordering of filters as much as possible.  
+    This ensures all filters are loaded.  
+- Properly update the bags when a filter is toggled.  
+- Hooks OpenBag and CloseBag.  
+    Should fix #217.  
+- Fixes #214.  
+- Fixed SyLevel integration, thanks to its author, suicidalkatt.  
+- Fixes #213.  
+- Revert "Experimental Masque support."  
+- Removed useless code in ChangeHighlight.  
+- Revert ".pkgmeta: use development version of libraries."  
+- Fixed reagent bank tooltip.  
+    Fixes #201.  
+- Experimental Masque support.  
+    Some skins do not support quality highlight.  
+- Update README.textile  
+- Fixed junk items.  
+- Prevents an error in UpdateBorder for some item buttons.  
+- Do not highlight changes on empty slots.  
+- Do not highlight invisible changes (i.e. bag/slot change only).  
+- Bring back the configurable, thick quality borders.  
+- Small changes in ItemLevel module.  
+- Added a module to temporarily highlight changes in bags.  
+- Fixed #208.  
+- Moved autoSort and autoDeposit logic to Bags.lua.  
+    Also, do not sort when there is no need to do so.  
+- README updated.  
+- Use BAG\_UPDATE\_DELAYED instead of a BucketEvent for bag updates.  
+- Fixed an error in SectionVisibilityDropdown.lua.  
+- Fixed an error in NewItemTracking.lua.  
+- Do update dynamically update the list of bags in Bags.lua anymore.  
+- Ignore the reagent bank in the bag planel of the bank.  
+- Added a button to buy and then to toggle the [R]eagent bank.  
+- Reworked the container frame to use a dynamic list of of container ids.  
+- AutoSort on closing the bag.  
+- Added a "Deposit" button to the bank.  
+- Merged the "tidy bag" module into the core, since it uses Blizzard's function.  
+- Removed some leftover code.  
+- Added a method to create the one-letter buttons in the container frame.  
+    And use it in the modules.  
+- Restored the "new item" module, using C\_NewItems.  
+- Rewritten the TidyBags module to use the built-in bag sort functions.  
+- Display the "new item" section at the top again.  
+- Fixed the reagent section name when displaying the bag slots.  
+- Do not display any bag slot for the reagent bank.  
+- Apparently Blizzard's NewItem system does not support the bank.  
+- Fixed the error happening when the mouse cursor enters bank buttons.  
+- Fix error in BankFrame.lua line 18.  
+- Reuse Blizzard's junk icon and quality border.  
+- Better reageant bank integration, yet not complete  
+- FORGE\_MASTER is no more.  
+- Scan items in the reagent bank.  
+- Fixed an issue with the new item filter.  
+- Merge branch 'master' into wod.  
+- Batch copyright update.  
+- Stacks items from different bag types when bag types are not shown on buttons.  
+- Stacks items from different bag types when bag types are not shown on buttons.  
+- Added an option to hide the anchoring corner.  
+- Money: added an option to display a small money frame.  
+- Added an option to hide the anchoring corner.  
+- Money: added an option to display a small money frame.  
+- Merge branch 'master' into wod  
+- Localization updated.  
+- New item filter: force an updated on BAG\_NEW\_ITEMS\_UPDATED.  
+- .pkgmeta: use development version of libraries.  
+- Use C\_NewItems to track new items.  
+- ItemButtons: properly update the display of "new" status using Blizzard API.  
+- ItemButtons: stop erasing the newly NewItemTexture attribute.  
+- ITEM\_QUALITY_* constants has been renamed to LE\_ITEM\_QUALITY_*.  
+- TOC bump.  
+- Consider the socket window as an interacting window.  
+- Fixed "new items not showing" in bank.  
+- Reworked the section layout to some glitches.  
+- Revert "Sections: do not cause a full layout on resize unless a button gets out of bounds."  
+- Changed default section ordering and layout updates.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- README update.  
+- Added an option (with confirmation) to disable error reports from embedded BugGrabber.  
+- Register a callback with the embedded BugGrabber to display only AdiBags errors.  
+- Added SyLevel support to the ItemLevel plugin.  
+- Do not update during a AH multisell. (drycoded)  
+- Lock the bag layout and the tidy module when the user has to select a target ("glowing hand" mouse cursor).  
+    This should prevent unwanted disenchant issues.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Merge pull request #1 from Adirelle/master  
+    merge  
+- Merge pull request #3 from sbWoW/ItemLevel\_SoO  
+    Itemlevel: update max-level for SoO heroic warforged 2/2 (ilvl 580)  
+- - update max-level for SoO heroic warforged 2/2 (ilvl 580)  
+    - set max-val (config) to ilvl 600  
+- Sections: do not cause a full layout on resize unless a button gets out of bounds.  
+- Manual filtering: do not allow the user to put items in the "free space" section.  
+- Embedded BugGrabber.  
+- Silently ignore ItemUpgradeInfo:GetUpgradedItemLevel(link) when it returns nil.  
+- Locales updated.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Added an option to try to limit the bag width.  
+- Use LibItemUpgradeInfo-1.0 to display the actual levels of upgraded items.  
+- Locales updated.  
+- Add another color scheme to the ItemLevel module.  
+- Removed ProfessionsVault support.  
+- Fixed NewItemTexture error at bank.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Hide the brand new NewItemTexture added in 5.4.0. Fixes #175.  
+- TOC bump.  
+- Display Tackle Boxes and Refrigerators in the LDB datasource.  
+- Open all bags when talking to the Void Storage and Reforging NPCs.  
+- Added some options to the Item Level module.  
+- ItemLevel: properly show the item level when the module is re-enabled.  
+- Added a new module : ItemLevel.  
+    Display the level of equippable item in the top left corner of the button.  
+- Fixed an error in CurrencyFrame.lua when any currency section is collapsed.  
+    ExpandCurrencyList requires its second argument to be either 0 or 1, and nothing else.  
+- Fix the custom filter mess.  
+- Do not pretend the original BankFrame is open when AdiBags overrides it ; should fix #172.  
+- SplitSectionKey always returns a section name for non-nil values.  
+- Upgrade the profile of FilterOverride without losing the section name.  
+- Manual filtering: assign items by batchs internally.  
+- TOC bump.  
+- Fix item sets detection for 5.3.  
+- Use the section listing API in the filter dropdown menu.  
+- Do not forget to wipe the reused table in containerProto:IterateSections.  
+- The visibility dropdown plugin uses the brand new section iterator.  
+- Added section listing and iterating API to the containerFrame class.  
+- FilterOverride uses the same format as core for section keys.  
+- Moved BuildSectionKey and SplitSectionKey to Utility.lua.  
+- Fixed section filter dropdown.  
+- Section filter dropdown: do not clear cursor until the item has been assigned.  
+- Locales updated.  
+- Alt-clicking on a section header with an item now opens a menu dropdown to quickly configure the filters.  
+- Added an option to disable the automatic updates.  
+    In that case, the title of sections that contain more items than what can be shown is prefixed with an asterisk (*).  
+- Locales update.  
+- Added an option to disable auto-opening at NPC's.  
+- TOC bump.  
+- Be more conservative about the dirty level of sections.  
+- Automatically assign the current height to sections of a row.  
+- Update content layout only when first shown or when the width increases of at least 2 columns.  
+- Removed an unused loal.  
+- Added a warning about milling/prospecting/disenchanting and bag updates in the README.  
+- README typo.  
+- Do not systematically refresh the layout when the minimum frame width changes.  
+- Minor fix concerning notWhenTrading.  
+- Tweaked frame levels so backpack and bank do not weirdly mix their widgets.  
+- Fixed #154.  
+- Support tackle box and refrigerator.  
+- Locales updated.  
+- Fixed some option spelling and ordering.  
+- Added an option to disable opening of configuration when right-clicking on an empty space.  
+- Locales updated.  
+- TOC bump.  
+- Locales updated.  
+- Use the new font system in core and currency module.  
+- Refactor font-related code and moved it into its own file.  
+- Use the PostSet hook in DataSource and Junk modules.  
+- Added font options to the currency module.  
+- Added an helper to build an font option group.  
+- Allow modules to set a hook on option update.  
+- Use BreakUpLargeNumbers for currency numbers.  
+- Pressing Alt while dropping an item on a section header now opens the manual filter configuration with pre-filled fields.  
+- The real Junk section is in the the Junk category.  
+    (There is a "Junk" section in some other category, probably Equipment.)  
+- Locales updated.  
+- Locales updated.  
+- Section headers now always have a tooltip. Alt-right-clikcing them opens related configuration panel.  
+- Properly SetScript or HookScript in addon.SetupTooltip.  
+- Fixed an issue preventing some option panels to be shown.  
+- Added options to change the core text colors.  
+- Use and update one FontObject per text type (bag and section headers).  
+- More tweaks to section layout.  
+- Locales updated.  
+- Tweaked the layout algorithm.  
+- Added a tooltip and more interaction to the bag titles.  
+- Right-clicking on container free space opens the configuration panel.  
+- New module : bank switcher.  
+    Allows to move whole sections from and to bank by right-clicking on their headers. Fixes half of #130.  
+- Minor update in Junk module.  
+- Updated globals used by Section.lua.  
+- Right-click on the junk section header at a merchants' to sell every items with a sell price.  
+- Added slot iterators to section and item buttons.  
+- Added back the section header highlights.  
+- Fixed overlapping section headers.  
+- Use buttons for section header and allow to set their scripts globally.  
+- Split the main core file into smaller files.  
+- Warn about using alpha version without error reporting.  
+- README updated.  
+- Changed the default settings of "automatic layout update" so people stop to submit tickets about section dancing, cf. #144.  
+- Fixed the issue where the bag could be smaller than the configured row width with no reason.  
+- Currency display: added an option to hide null amounts.  
+- Fixed #143.  
+- Fixed #142 and really fixed #141, I swear.  
+- Fixed #141.  
+- Added configuration on right-click for more modules.  
+- Right-clicking on the currency open the plugin configuration panel.  
+- Right-clicking the LDB toggle the configuration panel, instead of only opening it.  
+- README updated.  
+- Show source checkouts as "DEV" version.  
+- Create the option panel for the Blizzard addon lsit in the main addon.  
+- Fixed overlapping of currency and money.  
+- Register the /adibags command in the main addon.  
+- Locales updated.  
+- Config-ItemList is only needed in AdiBags\_Config.  
+- Slightly changed how lines are filled when the minimum bag width (due to plugin widgets) is greater than the maximum section width.  
+- Enhanced the balacing of column heights.  
+- Added the Hearthstone in the ignore list of the Junk filter.  
+- Do not let the header of the last section of each row overflows outside the column (or the bag).  
+- Fixed an issue where the very first bag layout is wrong.  
+- Properly refresh the bag layout when the visibility of any plugin widget changes.  
+- Put skin settings together.  
+- Added basic skinning using LibSharedMedia-3.0.  
+- Adding LibSharedMedia-3.0 and AceGUI-3.0-SharedMediaWidgets libraries.  
+- Moved all the configuration GUI into its own load-on-demand addon, AdiBags\_Config.  
+- Properly update the tooltip when switching virtual stack buttons ; should fix #133.  
+- Reworded the option "When trading" to "At merchants', bank, auction house, ...".  
+- Fixed the usage of some globals.  
+- Hook CloseSpecialWindows instead of CloseAllWindows.  
+    This should fulfill the same goal while reducing potential taint issues.  
+- Locales updated.  
+- Prevent the game menu from showing when closing bags using the 'Escape' key.  
+- Locales updated.  
+- Fixed #137.  
+- More caged pet annoyance fixed.  
+- Damn caged pet pseudo-items. Fixes #132.  
+- The tidy button can also be used to rearrange the sections.  
+- Added an option to define when section rearranging should occur.  
+- Update the bag less often when interacting with someone (merchant, banker, ...).  
+- Handle caged pets, that all have item id 82800 but battlepet: hyperlink.  
+- Locales updated.  
+- Whitespace fixes.  
+- Removed pre-4.3 searching module.  
+- Updated copyright notice.  
+- Locales updated.  
+- TOC fix.  
+- TOC bump.  
+- Updated .gitattributes.  
+- Locales updated.  
+- Added "known issues" to the README file.  
+- Locales updated.  
+- TOC bump.  
+- Added safety net to item set iteration.  
+- Fully update item buttons on show.  
+- Locales updated.  
+- Keep rescanning item sets if some items are not found.  
+- Pre-spawn item buttons to avoid issues when opening the bags in combat.  
+- Added ptBR locale strings, thanks to IkkeBR.  
+- Added support for Tackle Boxes.  
+- Locales updated.  
+- Properly catches main bank updates in TidyBag module and when automatically emptying a bag. Fixes ticket #76.  
+- README updated.  
+- Locales updated.  
+- Typos.  
+- Added a callback for ProfessionVault to shade our items.  
+- Completely redispatch all items when toggling the bag panel so free spaces are split/join as they should.  
+- Revert "TOC bump." since WoW client isn't happy with it.  
+- Fixed "Open all bags" keybinding (ticket #101).  
+- Use 4.3 item search boxes instead of our own.  
+- TOC bump.  
+- Hopefully fixed backpack auto-opening/closing (ticket #100).  
+- Locales updated.  
+- Properly leave the backpack open when leaving mailbox/merchant/bank or auction house if it was open beforehand. Hitting escape still closes all bags.  
+- Locales updated.  
+- TOC bump.  
+- .gitattributes updated.  
+- Added "globals" tags in comments.  
+- Added .gitattributes to ignore trailing spaces on commit.  
+- Updated globals.  
+- Use the new item list widget for manual filter configuration.  
+- Fixed minor issues with the item list config widget.  
+- Use the newly created item list widgets to handle junk include/exclude lists.  
+- Added some AceGUI widgets to handle item lists.  
+- Added options to add items to junk include/exclude lists.  
+- Really fixed ticket #92.  
+- Removed git submodule LibMovable-1.0 (which should be a submodule in the first place).  
+- Updated source headers; removed trailing whitespaces.  
+- Typos.  
+- Made most globals local.  
+- Fixed ticket #93; also removed several debug feedback that could cause errors.  
+- Revamped junk detection.  
+- Fixed ticket #92.  
+- Fixed ticket #91.  
+- Hopefully fixed ticket #73.  
+- Revamped the search widget.  
+- More work on the graphical configuration of the manual filter.  
+- Overhauled the "Manual Filter" configuration options ; fix ticket #88 and #90.  
+- Fixed the internal name of the "Filter Override" module (and fetch the associated settings).  
+- Don't choke on items not in cache; should fix ticket #86.  
+- Hopefully fixed ticket #84 (wrong button placement at startup).  
+- Fixed the .pkgmeta.  
+- README updated.  
+- Locales updated.  
+- Reuse LibBabble-Inventory-3.0 instead of using our own localization strings.  
+- Fixed currency icon size.  
+- Removed 4.0 compat code.  
+- TOC bump.  
+- 4.1 compatibility.  
+- Use Scrap item list to filter junk when available.  
+- TidyBags overhauled, do not care about dirty layout anymore.  
+- Locales updated.  
+- TidyBags: still tweaking processing.  
+- TidyPags: revampd the processing "loop" to reduce unneeded lookups and to properly tidy the layout at end of operation.  
+- TidyBags: revamped algorithm to attempt to merge item stacks before moving items into profession bags.  
+- Fixed ticket #78.  
+- Do not moe profession materials into non-profession bags when tidying up bags ; should fix ticket #76.  
+- Tidy Bags: some tweaks.  
+- Fixed an issue where the tidy bags is disabled when it should not (ticket #74).  
+- Ensure we do not automatically tidy bags in combat.  
+- TidyBags: compare items by id instead of link to properly match crafted items.  
+- Merge remote branch 'origin/master'  
+- TidyBags: handle bags at a low level.  
+- Locales updated.  
+- TidyBags: starting to handle bags at a lower level.  
+- TidyBags: do not run while in combat as PickupItem is protected (drycoded).  
+- Added options to the currency module since using Blizzard curreny panel to choose which currencies to display is quite counter-intuitive.  
+- Added a safety net if GetContainerNumFreeSlots returned nil though it should not.  
+- Fixed nil error in NewItemTracking.lua.  
+- Fixed some bag update issues.  
+- Properly refresh the bags when opening/closing trade window/mailbox/etc.  
+- Slightly updated layout refresh code.  
+- Have separate settings for backpack and bank width.  
+- New items: do not cause all bags to be updated when an new item is detected or removed from a bag.  
+- New items: have the reset button only update the appropriate bag.  
+- Fixed minor glitches with tidy bags.  
+- Fixed layout issues.  
+- Fixed typos and leaked globals.  
+- Rewritten the equipment set filter to use only slot information so it doesn't depend on item links.  
+- Fixed ticket #68.  
+- Virtual stacks: fixed an issue with the bank and slightly modified the options.  
+- Properly update the layout when resetting new item tracking.  
+- One can now choose exactly what should be stacked or not when trading or talking to merchants.  
+- Properly upgrade old settings when copying or switching profile.  
+- Completed ToggleBackpack hook.  
+- Do not stack normally unstackable item when trading (see ticket #67).  
+- Locales updated.  
+- Fixed virtual stacks when displaying the bag slot panel.  
+- Attempt to complete existing stacks of item when trying to empty a bag.  
+- TidyBags: also attempt to move incomplete stacks into profession bags if they cannot be completed.  
+- Removed unused code.  
+- When tidying bags, try to complete stacks before moving them into profession bags.  
+- Fixed a nil error with regard to stacks.  
+- Fixed bag/container family issues in TidyBags and when emptying bags.  
+- Moved utility functions into their own file.  
+- Do not dispatch items again when a new items is removed from the bags.  
+- Item buttons that are just moved around need to be refreshed.  
+- Tweaked bag layout in order to prevent sections from bouncing around when moving stuff.  
+- Properly open and close the backpack when starting/stopping to talk to merchants.  
+- Locales updated.  
+- Fixed "compare number with table error" in AnchoredBagLayout.  
+- Switched from tekDebug to AdiDebug.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Allow to enable the backpack and bank support separately (ticket #51).  
+- Fixed some issues with the equipped bag panels, including ticket #54.  
+- When emptying a bag, try to full other bags in increasing bag order. Should fixed ticket #55.  
+- Fixed ticket #53 (nil local 'button').  
+- Merge github.com:Adirelle/AdiBags  
+- New items: properly flag an brand new item in bags even if a copy of that item is already equipped.  
+- Allow use GetDistinctItemIDs for item sets so we don't get lost by unique IDs in item links.  
+- Small tweaks.  
+- Locales updated.  
+- Fixed virtual stack option ordering.  
+- Fixed the tooltip info module with regard to third-party tooltip modifiers.  
+- Virtual stacks: added a reference to the stack button to the visible slot item button.  
+- Check item link validity in container frame.  
+- Strip unique id and link level from internal item strings.  
+- Report invalid item links in alpha packages (if you have tekDebug installed).  
+- New items: also ignore brand new junk items.  
+- New items: do not unmark stack ok items unless you remove them all from your bags.  
+- Have the set filter update more often, hopefully catching valid links.  
+- Only use tekDebug in debug and alpha packages.  
+- New items: also delay the first update after zoning.  
+- Allow the tidy button to refresh the layout.  
+- Preventing reordering of virtual stacks when removing items from a bag.  
+- Minor bugfixes.  
+- Check item links before using them.  
+- Also disable on PLAYER\_LEAVING\_WORLD.  
+- Use our interacting window API to open and close the backpack and the bank.  
+- Ignore PLAYERBANKSLOTS\_CHANGED that aren't related to the generic bank slots.  
+- Do not enable anything before the first PEW.  
+- Locales updated.  
+- New items: better iteraction with inventory.  
+- New items: more tweaks.  
+- Sanitized globalLock value.  
+- Merge git://github.com/Adirelle/AdiBags  
+- Locales updated.  
+- Fixed virtual stack of unstackable items.  
+- Locales updated.  
+- Fixed the nil error in NewItemTracking.lua.  
+- Dispatch items in section per bag when showing the bag panel.  
+- Force a layout update when unlocking all buttons.  
+- Fixed a subtle bug with virtual stacks.  
+- Updated new item tracking logic, should fix ticket #49.  
+- Locales updated.  
+- Equipment set filter: hopefully fixed first login with no item cache.  
+- New item tracker: reworked to better handle first login with an empty item cache.  
+- Removed spammy debug outputs.  
+- Removed "inconsistent" item tracking.  
+- Bag slot: fixed bag updating.  
+- Added a timeout when emptying a bag, so lag or a missing event doesn't lock the inventory forever.  
+- Bag slots: use our own implementation that is far easier to manage.  
+- Added a way to lock all item buttons, so nothing to bad happens when we automatically move items around (tidy or empty bag).  
+- Fixed the bag emptying process.  
+- Merge github.com:Adirelle/AdiBags  
+- Bag slots: one can right click on a bag to try to empty it.  
+- Bag slots: display the number of items in each bag.  
+- Small README update.  
+- Set filter: postpone set scanning until we need it.  
+- New items: track changes in stack sizes, not only the number of stacks.  
+- Found a way to properly identify set items without tooltip scanning so the equipment filter should be more accurate.  
+- New item detection: now use our own implementation of GetItemCount that gives distinct counts for distinct equipment items.  
+- Added an option not to merge incomplete item stack at merchant's, mailboxes, bank, ... (ticket #29)  
+- Typo.  
+- Removed the useless ammo/shard filter and reorder slightly the other ones.  
+- New item filter should distinguish crafted and enchanted items now. Also added an option to ignore low quality items.  
+- Fixed "compare number with nil" error in TidyBags.  
+- Fixed ticket #45.  
+- Update all bags when the visibility of any section is changed.  
+- Moved the section visibility menu into its own module, so one can disable it.  
+- Displays checkboxes instead of radiobuttons in section visibility dropdown.  
+- Manual filter module: moved the "Add" section to the top of the page.  
+- Fixed ticket #43.  
+- TOC bump.  
+- Fixed ticket #40.  
+- X-Compatible-With: 40000.  
+- Locales updated.  
+- Merge branch 'master' of git://github.com/Adirelle/AdiBags  
+- Added a dropdown menu to the container to change section visibility.  
+- Locales updated.  
+- README updated.  
+- More locale updates.  
+- Fixed ticket #38 (keyring not showing).  
+- Locales updated.  
+- Hopefully fixed ticket #37 (default bags opening).  
+- Typo.  
+- .pkgmeta updated so the README.textile is included in the packages.  
+- README update.  
+- Fixed a nil error in options.  
+- Localization updated.  
+- Merge branch 'master' of git://github.com/Adirelle/AdiBags  
+- Added an option to disable the addons (ticket #33) and revamped the options a bit.  
+- Properly import previous anchor settings.  
+- Localization update.  
+- Added an option to move the bags separately (ticket #25).  
+- Ensure items have a name before trying to count them.  
+- Tidy Bags won't operate on bags containing inconsistent slot data.  
+- Detect inconsistent slot data to avoid silly errors.  
+- Do not memoize comparision results for uncached items.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Prevents item sort function to fail when some items are not in the client cache ; should fix some nil comparison errors (part of ticket #34).  
+- Prevents nil error in Tidybags.lua line (parts of ticket #34).  
+- Double check item section name.  
+- Extra sanity check in object pool handling.  
+- Make extra the equipment filter returns something.  
+- Attempt to fix ticket #23.  
+- Removed spammy debug message.  
+- frFR locale updated.  
+- Added a button to clear searched text (ticket #31).  
+- Fixed error when changing scale with default settings (ticket #20).  
+- Added an option to TidyBags module to tidy automatically when the trade/loot/merchant/bank/auction house window is closed (ticket #27).  
+- Removed an useless embed in SearchHighlight module.  
+- Added an option to split armor by type in equipment filter (ticket #28).  
+- Fixed search highlight when moving items around (ticket #30).  
+- More localization.  
+- Locales updated.  
+- Merge branch 'master' of github.com:Adirelle/AdiBags  
+- Fixed ticket #21.  
+- Locales updated.  
+- Locales updated.  
+- Locales updated.  
+- Added a module to display additionnal information in bag item tooltips.  
+- Added the possibility to create custom sections in the manual filter.  
+- Filter order is now strict and the actual order is properly displayed in the configuration window.  
+- Updated localization to use my new script.  
+- Do not shock when GetItemInfo returns nil for max stack size.  
+- Typo.  
+- The junk filter should not accept high-quality items anymore.  
+    Updated the equipment filter to dispatch itmes in four general sections (default).  
+- Description update.  
+- Small locale update.  
+- hopefully fixed scale issues (ticket #16).  
+- Locales updated.  
+- Added a currency module.  
+- Cope with huge sections and low bag heights.  
+- Redispatch the items once the bags have been tidied up.  
+- Properly embedded AceDBOptions-3.0.  
+- Locales updated.  
+- Locales updated.  
+- Do not update every section on filter changed.  
+- Properly update bank bag slots when a new slot is purchased.  
+- Layout code polishing.  
+- When tidying bags, always try move small stacks into big stacks.  
+- Locales updated.  
+- Close all bags when closing the merchant window.  
+- Attempt to fix "compare nil with number" error that sometimes pops up.  
+- Overhauled layout and update code.  
+- Have search highlight module severly fade items that do not match.  
+- Tweaked the default settings.  
+- Merge branch 'master' of git@github.com:Adirelle/AdiBags  
+- Display addon version in configuration window.  
+- Fixed safecall typo.  
+- Secured some callback calls.  
+- Locales updated.  
+- Always reorder items when opening the bags, always !  
+- Properly reorder items when sorting order is changed or when the bags are closed then opened again.  
+- Added an option to disable dimming of poor-quality items.  
+- README updated.  
+- Locales updated.  
+- Layout is definitively touchy.  
+- Changed bag size options and tweaked bag layout again.  
+- Reworked Manuel Filter options.  
+- Added some sounds here and there.  
+- On AdiBags\_FilterChanged, only dispatch items again instead of doing a full update.  
+- Removed spammy debug.  
+- Have the virtual stacks change their "visible slot" less often.  
+- Updated the bag panel: no more funny actions (like opening old bags) though one can now purchase bank slots.  
+- Merge branch 'master' of git@github.com:Adirelle/AdiBags  
+    Conflicts:  
+    	widgets/ContainerFrame.lua  
+- Tidied up whitespaces.  
+- Added a backdrop button in container frame, that acts as a free slot.  
+- Fixed an issue with virtual stacks of free slots.  
+- LayeredRegion now updates widget framelevel.  
+- Do not track new items when bafs are not visible.  
+- Added an option to change the way sections are layed out.  
+- Merge branch 'master' of git://github.com/Adirelle/AdiBags  
+- Tweaked anchor callbacks.  
+- Updated LibMovable-1.0 submodule and updated the anchor handling to use it.  
+- Fixed some weirdness in locales causing error with enUS clients.  
+- Slightly updated filtering code, added some sanity checks.  
+- Fixed "attempt to concatenate a boolean value" error.  
+- Added frFR locales.  
+- Merge branch 'master' of git://github.com/Adirelle/AdiBags  
+- Added new locale strings.  
+- Properly update bag content when changing the settings of the manual filter.  
+- Slightly changed virtual stack behavior and configuration. Check your settings.  
+- Tweaked "item categories" filter.  
+- Locales updated.  
+- Added some more options to existing filters.  
+- Define an order for section categories.  
+- Added an optional multi-column layout.  
+- Fixed some issues with the anchor.  
+- Do not include partial stack in virtual stacks.  
+- Changed the layout to be more stable and keep related section togehter. This wastes a little more space though.  
+- Tweaked new item tracked, that now uses item ids instead of item links.  
+- Updated the README.  
+- Fixed error when disabled the new item tracker.  
+- Take header and bottom widgets into account when calculating bag container width.  
+- Added an option to toggle bag type display on items.  
+- Setup project localization.  
+- Added some options to reset manual filtering.  
+- Darken poor-quality items as a part of "quality highlight" effect.  
+- Plugin and filter configuration UI overhauled.  
+- Added a FilterOverride plugin.  
+- Added a warning message in ItemCategory filter description.  
+- Now display a "Configure" button in filter and plugin list.  
+    Defined a default configuration window size.  
+- Hopefully fixed "all items are new" bug at login.  
+- Fixed money position.  
+- NewItemTracking must ignore update events while equipment sets are being swapped.  
+- Virtual stacks now try always to show an unlocked slot.  
+- Updated embedded LibMovable-1.0.  
+- Rewritten the new item tracker from scratch.  
+- Tweakd new layout.  
+- Fixed MoneyFrame size.  
+- Added a widget superclass to help laying out.  
+- Added a specific filter for quest items.  
+- Enhanced debugging output.  
+- Merge branch 'master' of git@git.wowace.com:wow/adibags/mainline  
+    Conflicts:  
+    	README.textile  
+- Added an option to change item sorting order.  
+- Fixed an issue where the bags would not update properly on configuration change.  
+- Added a workaround to open the configuration window from the InterfaceOptionsFrame.  
+- README updated.  
+- README updated.  
+- New plugin: Money.  
+- ContainerFrame now supports adding widgets at bottom left and bottom right corners.  
+- Fixed open and close sounds.  
+- Properly update if the configuration is changed while the bags are hidden.  
+- README updated.  
+- Reverted locales to plain list. Getting strings from Blizzard API causes issues when the items aren't in cache.  
+- Fixed "Configure button does not work" and small UI tweaks.  
+- More sanity checks.  
+- Sometimes order matters.  
+- Working new virtual stacks.  
+- Fixed minor errors in new ItemButton code.  
+- Attempt to fix bank virtual stacks.  
+- Optimized slightly ItemButton since they are replaced when the item changes.  
+- Take advantage of inheritance.  
+- Use AceEvent-3.0 to handle ItemButton's event.  
+- Container frames have to stop listening to message when hidden.  
+- Use ItemButton methods instead of using Blizzard API whenever possible.  
+- Drycoded options to change background colors.  
+- Merge branch 'master' of git://github.com/Adirelle/AdiBags  
+- Fixed a potential error with changed items.  
+    Check the link returned by GetContainerItemInfo to detect bad hooks.  
+- Slightly tweaked how sections are ordered and layed out. BTW do not let long section names waste an insane amount of space.  
+- Added descriptions to every built-in filters.  
+- Allow any item to be stacked.  
+- Made the options more verbose.  
+- Added some options to the LDB plugin.  
+- Added some options to the default filters.  
+- Defined a fallback section.  
+- Always embed AceEvent.SendMessage into filters.  
+- Fixed a nil error on filter creation.  
+- Take "columns" setting into account.  
+- Changed the layout of filter and plugin options.  
+- Moved NewItem options into the option of plugins.  
+- Added some options to the "New Item Tracking" module.  
+- Removed the redondant 80% scale on bags.  
+- DataSource: can no longer be disabled.  
+- Added options to change the filter priorities.  
+- Moved options into their own AceConfigDialog frame to have more room.  
+- Added support for filter and plugins options.  
+- Cosmetics.  
+- Extract some localized item strings using Blizzard API.  
+- Various small tweaks on section layout.  
+- Order sections by total available space instead of number of items.  
+- Fixed the priority of the ItemCategory filter.  
+- Added AceGUI and AceConfig as externals.  
+- Added a first batch of options.  
+- README updated.  
+- Added some tooltip on bag header widgets.  
+- Fixed TidyBags.  
+- Merged and moved some files.  
+- Tidied module enable/disable code.  
+- Added a module to tidy bag contents.  
+- Added an API to inject a widget in bag header bar.  
+- Postpone any button update while the container is being updated.  
+- New item tracking ported to the new modular system.  
+- Each bag is now handled by a specific module, that adds a level of abstration above container frames.  
+    Made name-search a module.  
+- Added bag anchoring so one can move the bags, using LibMovable-1.0.  
+- Typo.  
+- Cache slot data to allow a better tracking of stack size changes in addition to item changes.  
+- Added LibDataBroker-1.1 as a git submodule.  
+- Prepared for wowace packaging.  
+- Try to put the "New" section at top of the bag and the "Free space" section at bbottom; the section layout code may ignore this though.  
+- Fixed search item issue where some buttons weren't updated.  
+- Added a filter for the new items.  
+- Added a button per bag to reset the new status.  
+- Scan player inventory to avoid tagging items as new when changing equipment.  
+- Cosmetic tweak to new item glow.  
+- "New item" feature tweak.  
+- Fixed a "comparing number with nil" error.  
+- Added "new item" feature. Also got rid of useless "event" arguments.  
+- Overhauled filter system; now every filter is a submodule.  
+- Hopefully fixed "addon blocked" errors; cosmetic changes.  
+- Use AceEvent messaging to propagate bag updates.  
+    Filters can provide a list of events to listen to; bags are updated when these events are received.  
+- Hopefully fixed issues with bank generic buttons.  
+- Added missing localized string.  
+- Almost fixed bank generic button handling.  
+- Fixed a typo on filter name.  
+- Force layout update when a section is emptied.  
+- Fixed various errors.  
+- Disable the built-in bank frame.  
+- Say goodbye to the bank NPC when the bank bag is closed.  
+- Typo.  
+- Added localization.  
+- Fixed method name.  
+- Have virtual item stacks working.  
+- Use a factor of 100 to build internal slotId; it's far easier to debug.  
+- Moved code around, added comments.  
+- Properly release empty section.  
+    Also stop reacting to BAG\_UPDATE during equipment set switching.  
+- Do not try to position new buttons when the layout will refreshed anyway.  
+- Hide frame before calling :OnRelease to reduce visual glitchs.  
+- Gave OO some love.  
+- Brand new layout code, which behaves nicely when moving items around.  
+- Added a tooltip to the equipped bag toggle.  
+- Cosmetic.  
+- Fixed bag slot size and ids.  
+- Added a button to bags to toggle the bag slot panel.  
+- Updated the datasource icon.  
+- Added bag slot panels.  
+- Reuse Blizzard code to handle item cooldown.  
+- Fixed armor and weapon ordering.  
+- Optimized layout.  
+- Baggins-like section layout.  
+- Added section separators (yet not widgets).  
+- Added an incomplete filtering system.  
+- Minor layout tweaks.  
+- Fixed datasource free space display.  
+- Fixed item sorting error.  
+- Added "highlight by name" feature.  
+- Added icons for each item family.  
+- Added item/free slot stacking.  
+- Added a LDB data source.  
+- Fixed quality color display.  
+- Fixed UI hooking so bags are opened and closed at right times.  
+- Added a close button and a title. Enhanced item sorting.  
+- Show a tag on slot from special bags (Soul, Quiver, ...).  
+- Sort items.  
+- Fixed bank background color.  
+- Have the bag backdrop catchs mouse events.  
+- Fixed issue with empty bank slots.  
+- Fixed bank bag position.  
+- Fixed item layout.  
+- Fixed empty slot display.  
+    Fixed quality highlighting.  
+- Fixed ContainerFrame BAG\_UPDATE handling. Also propagates it to buttons.  
+- Do not forget to define the ID of the button parent frames.  
+- Fixed frame parenting show items are properly hidden when a bag is closed.  
+- First drycoded version.  

@@ -319,10 +319,13 @@ if [ -z "$topdir" ]; then
 			dir=${dir%/*}
 			topdir="$topdir/.."
 		done
-		if [ ! -d "$topdir/.git" ] && [ ! -d "$topdir/.svn" ] && [ ! -d "$topdir/.hg" ]; then
-			echo "No Git, SVN, or Hg checkout found." >&2
-			exit 1
-		fi
+		
+		# if [ ! -d "$topdir/.git" ] && [ ! -d "$topdir/.svn" ] && [ ! -d "$topdir/.hg" ]; then
+		#	 echo "topdir -- $topdir \n"
+		#	 echo "No Git, SVN, or Hg checkout found." >&2
+		#	 exit 1
+		# fi
+
 	fi
 fi
 
@@ -407,27 +410,32 @@ case $basedir in
 esac
 
 # Set $repository_type to "git" or "svn" or "hg".
-repository_type=
-if [ -d "$topdir/.git" ]; then
-	repository_type=git
-elif [ -d "$topdir/.svn" ]; then
-	repository_type=svn
-elif [ -d "$topdir/.hg" ]; then
-	repository_type=hg
-else
-	echo "No Git, SVN, or Hg checkout found in \"$topdir\"." >&2
-	exit 1
-fi
+repository_type=git
+
+# if [ -d "$topdir/.git" ]; then
+#	 repository_type=git
+# elif [ -d "$topdir/.svn" ]; then
+#	 repository_type=svn
+# elif [ -d "$topdir/.hg" ]; then
+#	 repository_type=hg
+# else
+#	 echo "No Git, SVN, or Hg checkout found in \"$topdir\"." >&2
+#	 exit 1
+# fi
 
 # $releasedir must be an absolute path or inside $topdir.
-case $releasedir in
-	/*) ;;
-	$topdir/*) ;;
-	*)
-		echo "The release directory \"$releasedir\" must be an absolute path or inside \"$topdir\"." >&2
-		exit 1
-		;;
-esac
+target="$(pwd)/$releasedir"
+releasedir=$target
+echo "Releasing to... $releasedir"
+# exit 1
+# case "$releasedir" in
+#	 /*) ;;
+#	 $topdir/*) ;;
+#	 *)
+#	  	echo "The release directory \"$releasedir\" must be an absolute path or inside \"$topdir\"." >&2
+#	  	exit 1
+#	 	 ;;
+# esac
 
 # Create the staging directory.
 mkdir -p "$releasedir" 2>/dev/null || {
