@@ -4,6 +4,6 @@
 [submodule "AutoTurnIn"]
 	path = AutoTurnIn
 	url = https://github.com/lure/AutoTurnIn.git
-[submodule "AdiBags"]
-	path = AdiBags
+[submodule "_AdiBags"]
+	path = _AdiBags
 	url = https://github.com/AdiAddons/AdiBags.git
