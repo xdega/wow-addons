@@ -1,4 +1,3 @@
-# 10.3.8 (2022-06-01)
+# 10.4.1 (2022-07-05)
 
-* Fixed a bug with Threat Plates overwriting the Profiles page of other addons when adding the import/export section (thanks to WoWUIDev Discord!).
-* Updated TOC version for Patch 9.2.5.
+* Changed default for "Players in Instances" (under Blizzard Settings - Names) to disabled so that player names no longer are shown automatically in instances [Comment #6271].

@@ -1,8 +1,6 @@
-## [1.6.11] - 2022-06-01
+## [1.6.12] - 2022-06-27
 
-### Added
+### Fixed
 
-- Add support for WoW 9.2.5
-- Update talent data for WoW 9.2.5
-- Update icons for WoW 9.2.5
+- Fix error in ToC
 

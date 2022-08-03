@@ -1,9 +1,9 @@
-## Interface: 20503
+## Interface: 20504
 
 ## Title: Bartender4
 ## Notes: Simple and Advanced combined - Bartender4 ActionBar AddOn
 
-## Version: 4.11.1
+## Version: 4.11.2
 
 ## Author: Nevcairiel
 ## X-Email: h.leppkes at gmail dot com
