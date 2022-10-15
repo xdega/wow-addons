@@ -7,3 +7,9 @@
 [submodule "_AdiBags"]
 	path = _AdiBags
 	url = https://github.com/AdiAddons/AdiBags.git
+[submodule "_Details"]
+	path = _Details
+	url = https://github.com/Tercioo/Details-Damage-Meter
+[submodule "_WeakAuras2"]
+	path = _WeakAuras2
+	url = https://github.com/WeakAuras/WeakAuras2.git
