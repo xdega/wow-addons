@@ -15,7 +15,7 @@ local max = math.max
 
 --api locals
 local PixelUtil = PixelUtil or DFPixelUtil
-local version = 5
+local version = 6
 
 local CONST_MENU_TYPE_MAINMENU = "main"
 local CONST_MENU_TYPE_SUBMENU = "sub"
@@ -1134,7 +1134,7 @@ function DF:CreateCoolTip()
 
 	function gameCooltip:RefreshSpark(menuButton)
 		menuButton.spark:ClearAllPoints()
-		menuButton.spark:SetPoint("LEFT", menuButton.statusbar, "LEFT", (menuButton.statusbar:GetValue() * (menuButton.statusbar:GetWidth() / 100)) - 5, 0)
+		menuButton.spark:SetPoint("left", menuButton.statusbar, "left", (menuButton.statusbar:GetValue() * (menuButton.statusbar:GetWidth() / 100)) - 5, 0)
 		menuButton.spark2:ClearAllPoints()
 		menuButton.spark2:SetPoint("left", menuButton.statusbar, "left", menuButton.statusbar:GetValue() * (menuButton.statusbar:GetWidth()/100) - 16, 0)
 	end
@@ -3207,6 +3207,31 @@ function DF:CreateCoolTip()
 			gameCooltip:Hide()
 		end)
 	end
+
+	local cyrillic = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЁЂЃЄЅІЇЈЉЊЋЌЎЏҐабвгдежзийклмнопрстуфхцчшщъыьэюяёђѓєѕіїјљњћќўџґАаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя"
+	local latin = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	local chinese = "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟﾡﾢﾣﾤﾥﾦﾧﾨﾩﾪﾫﾬﾭﾮﾯﾰﾱﾲﾳﾴﾵﾶﾷﾸﾹﾺﾻﾼﾽﾾￂￃￄￅￆￇￊￋￌￍￎￏￒￓￔￕￖￗￚￛￜ"
+
+	local alphabetTable = {}
+
+	for letter in latin:gmatch(".") do
+		alphabetTable[letter] = "enUS"
+	end
+	for letter in cyrillic:gmatch(".") do
+		alphabetTable[letter] = "ruRU"
+	end
+	for letter in chinese:gmatch(".") do
+		alphabetTable[letter] = "zhCN"
+	end
+
+	function gameCooltip:DetectLanguageId(text)
+		for letter in text:gmatch(".") do
+			if (alphabetTable[letter]) then
+				return alphabetTable[letter]
+			end
+		end
+	end
+
 	return gameCooltip
 end
 

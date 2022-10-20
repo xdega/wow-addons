@@ -17,7 +17,7 @@
 
 		--random name if nameless
 		if (not framename) then
-			framename = "DetailsToolbarButton" .. math.random (1, 100000)
+			framename = "DetailsToolbarButton" .. math.random(1, 100000)
 		end
 
 		--create button from template
@@ -42,7 +42,7 @@
 		--textures
 		button:SetNormalTexture(icon)
 		button:SetPushedTexture(icon)
-		button:SetDisabledTexture (icon)
+		button:SetDisabledTexture(icon)
 		button:SetHighlightTexture(icon, "ADD")
 		button.__icon = icon
 		button.__name = pluginname
@@ -199,7 +199,7 @@ end
 			f.icon:SetTexture(button.__icon)
 			f.title:SetText(button.__name)
 			f.desc:SetText(plugin_object:GetPluginDescription())
-			_detalhes:SetFontSize (f.desc, _detalhes.font_sizes.menus)
+			_detalhes:SetFontSize(f.desc, _detalhes.font_sizes.menus)
 			_detalhes:SetFontFace (f.desc, _detalhes.font_faces.menus)
 			
 			--f.background:SetTexture(_detalhes.tooltip.menus_bg_texture)

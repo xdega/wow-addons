@@ -1,8 +1,16 @@
 # Details! Damage Meter
 
-## [](https://github.com/Tercioo/Details-Damage-Meter/tree/3f3d4db5f0d3656d68d50d3c826117eb6d8be13c) (2022-10-14)
-[Full Changelog](https://github.com/Tercioo/Details-Damage-Meter/commits/3f3d4db5f0d3656d68d50d3c826117eb6d8be13c) 
+## [Details.DF.SL.Wrath.10144.146](https://github.com/Tercioo/Details-Damage-Meter/tree/Details.DF.SL.Wrath.10144.146) (2022-10-18)
+[Full Changelog](https://github.com/Tercioo/Details-Damage-Meter/commits/Details.DF.SL.Wrath.10144.146) 
 
+- bump  
+- update on framework and openraidlib  
+- Open Raid Library update  
+- Merge pull request #364 from Flamanis/NewTimer-PostponeSwitch  
+    Pass self reference to timer callback for PostponeSwitchToCurrent  
+- Pass self reference to timer callback for PostponeSwitchToCurrent  
+- Fixed Evoker spec icon in the breakdown window, added evoker icon into spec icons with alpha  
+- bug fixes  
 - QuickDispatch now uses xpcall instead of pcall, fixed search box erroring on some searchs  
 - Added Misses  
 - updates  
