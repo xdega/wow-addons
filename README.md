@@ -1,6 +1,15 @@
-# WoW Addon Management
+## Code's WoW Addon Backup
 
-- Try to pull addons in as Git submodules where possible.
-- If an addon has an associated release script in its repo (ie. `.pkgmeta`) then run the following command:
-  - `./release.sh -t "_AddonSubmodule/" -r "AddonSubmodule"`
-  - Note that any submodule that requires a release script should be prepended with `_`
+Most Addons are managed by CurseBreaker: [https://github.com/AcidWeb/CurseBreaker](https://github.com/AcidWeb/CurseBreaker)
+
+Aside from the addons, the UI can be built using the default UI and the following import strings:
+
+### UI Import: Protection Paladin
+```
+0 30 0 0 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%)$+$ 0 1 1 6 0 MainMenuBar 0.0 5.0 -1 ##$$%/&('%(#,$ 0 2 1 6 0 MultiBarBottomLeft 0.0 5.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 2 0 MultiBarRight -5.0 0.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 7 MultiBar5 0.0 0.0 -1 ##$$%/&('%(#,$ 0 7 1 1 7 MultiBar6 0.0 0.0 -1 ##$$%/&('%(#,$ 0 10 1 6 0 MainMenuBar 0.0 5.0 -1 ##$$&('% 0 11 1 6 0 MainMenuBar 0.0 5.0 -1 ##$$&('%,# 0 12 1 6 0 MainMenuBar 0.0 5.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$$ 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$# 3 0 0 7 7 UIParent -185.2 252.5 -1 $$3# 3 1 0 7 7 UIParent 178.5 247.5 -1 %#3# 3 2 0 7 7 UIParent 179.0 139.2 -1 %$&$3# 3 3 0 4 4 UIParent -590.0 -235.5 -1 '$($)#-5.#/#1$3# 3 4 0 6 6 UIParent 523.8 46.0 -1 ,#-#.#/#0#1#2( 3 5 0 3 3 UIParent 17.0 -181.8 -1 &#*#3# 3 6 1 5 5 UIParent 0.0 0.0 -1 3# 4 -1 1 7 1 MainMenuBar 0.0 5.0 -1 # 5 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 6 0 1 2 0 MinimapCluster -10.0 -10.0 -1 ##$#%#&.(()(*# 6 1 0 7 7 UIParent -457.3 109.2 -1 ##$#%#'+(()(*# 7 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 8 -1 1 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K
+```
+
+### UI Import: Holy Paladin
+```
+0 30 0 0 0 4 4 UIParent 0.0 -456.0 -1 ##$$%/&('%)$+$ 0 1 0 4 4 UIParent 0.0 -400.0 -1 ##$$%/&('%(#,$ 0 2 1 6 0 MultiBarBottomLeft 0.0 5.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 2 0 MultiBarRight -5.0 0.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 7 MultiBar5 0.0 0.0 -1 ##$$%/&('%(#,$ 0 7 1 1 7 MultiBar6 0.0 0.0 -1 ##$$%/&('%(#,$ 0 10 0 1 7 MainMenuBar -122.5 -4.0 -1 ##$$&('% 0 11 0 6 6 UIParent 583.2 268.3 -1 ##$$&('%,# 0 12 1 6 0 MainMenuBar 0.0 5.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$$ 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$# 3 0 1 8 7 UIParent -300.0 250.0 -1 $$3# 3 1 0 5 5 UIParent -915.3 -295.0 -1 %#3# 3 2 0 3 3 UIParent 1719.8 -400.0 -1 %#&#3# 3 3 0 7 7 UIParent -241.2 236.5 -1 '$(#)#-#.#/#1$3# 3 4 0 7 7 UIParent -209.2 235.2 -1 ,#-#.#/#0#1#2( 3 5 0 0 0 UIParent 32.0 -141.8 -1 &#*#3# 3 6 1 5 5 UIParent 0.0 0.0 -1 3# 4 -1 1 7 1 MainMenuBar 0.0 5.0 -1 # 5 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 6 0 1 2 0 MinimapCluster -10.0 -10.0 -1 ##$#%#&.(()(*# 6 1 1 2 8 BuffFrame -13.0 -15.0 -1 ##$#%#'+(()(*# 7 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 8 -1 1 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 6 0 MainMenuBar 0.0 5.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K
+```
