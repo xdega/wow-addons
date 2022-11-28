@@ -1,6 +1,8 @@
-## Interface: 90001
+## Interface: 100002
 ## Title: idTip
-## Version: 10.0.1
-## Notes: Adds IDs to the ingame tooltips
+## Version: 10.2.1
+## Notes: Adds various IDs to tooltips
 ## Author: silverwind
+## X-Curse-Project-ID: 24541
+## X-WoWI-ID: 17033
 idTip.lua
