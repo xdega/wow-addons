@@ -1,16 +1,34 @@
-tag d8c07e343f99678ef49b14772a4f20ee9b999b6a Details.DF.Wrath.10259.146
+tag 35b22fa0b236e6a45e3286611bb024885de6bf1b Details.DF.Wrath.10335.148
 Author:	Tercio Jose <terciob19@hotmail.com>
-Date:	Wed Nov 2 20:42:10 2022 -0300
+Date:	Mon Dec 12 13:34:05 2022 -0300
 
-commit 32e0a5b8dfbcee5710e6d7b4fcec771e2964585e
+commit 3f298dcc7707577656f1e1e37cdca2660717ba3c
 Author: Tercio Jose <terciob19@hotmail.com>
-Date:   Wed Nov 2 20:41:43 2022 -0300
+Date:   Mon Dec 12 13:33:30 2022 -0300
 
-    Removed the encounter_start message from Wrath
+    Up version counter
 
-commit c48d032c1676bc5c4789fb12396a3d22a28a2d01
+commit dc1d27682e688c82f761762c235f170b79effedd
 Author: Tercio Jose <terciob19@hotmail.com>
-Date:   Wed Nov 2 20:08:36 2022 -0300
+Date:   Sun Dec 11 23:10:45 2022 -0300
 
-    Fix for some error involving gradient color
+    added exclusive function for pet detection
+
+commit 641e5cf0dca2e2c2795505a980f15da8bfc9dcab
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Sun Dec 11 14:09:44 2022 -0300
+
+    Lib OpenRaid and Details! Framework updates
+
+commit ebade8e159043b34c4c8a76ebf6eb0ea0552173a
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Sat Dec 10 19:05:32 2022 -0300
+
+    Lib Update
+
+commit 9c3275e287306ce6b0a8ae639fc5d091beddd0f5
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Sat Dec 10 09:07:46 2022 -0300
+
+    Fixing interrupt and cooldown chat prints class icon
 
