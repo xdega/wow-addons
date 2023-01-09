@@ -33,8 +33,6 @@ if L then
 	L.conductive_marks = "Zeichen" -- Conductive Marks
 	L.conductive_mark = "Zeichen" -- Singular
 
-	L.custom_off_chain_lightning = "Kettenblitzschlag ist standardmäßig deaktiviert, diese Option zum Aktivieren einschalten."
-
 	L.custom_on_stop_timers = "Fähigkeitenleisten immer anzeigen"
 	L.custom_on_stop_timers_desc = "Fähigkeiten, welche immer angezeigt werden: Leitfähiges Zeichen"
 end
@@ -53,8 +51,6 @@ end
 
 L = BigWigs:NewBossLocale("Dathea, Ascended", "deDE")
 if L then
-	L.marks_on_me = "%d Zeichen" -- {Stacks} Conductive Mark on the player
-
 	L.conductive_marks = "Zeichen"
 	L.conductive_mark = "Zeichen"
 	L.raging_burst = "Neue Tornados"
@@ -77,10 +73,18 @@ if L then
 	L.ultimate_desc = "Zeigt Timer für ultimative Fähigkeiten an (Sengendes Gemetzel, Absoluter Nullpunkt, Seismischer Riss, Donnerschlag) wenn nicht bekannt ist, an welchem Altar der Boss ist."
 	L.ultimate_bartext = "%s [Ultimativ]" -- {Spell} [Ult]
 
+	L.add_bartext = "%s [Add]" -- "{Spell} [Add]"
+
+	L.Fire = "Feuer"
+	L.Frost = "Frost"
+	L.Earth = "Erde"
+	L.Storm = "Sturm"
+
 	-- -- Fire
 	L.magma_burst = "Pfützen"
 	L.molten_rupture = "Wellen"
 	L.searing_carnage = "Tanzen"
+	L.raging_inferno = "Pfützen soaken"
 
 	-- -- Frost
 	L.biting_chill = "Kälte DoT"
@@ -98,7 +102,7 @@ if L then
 	L.thundering_strike = "Soaks"
 
 	-- -- General
-	L.primal_attunement = "Soft Enrage"
+	L.primal_attunement = "Soft Berserker"
 
 	-- -- Stage 2
 	L.violent_upheaval = "Säulen"
@@ -115,11 +119,51 @@ if L then
 	L.icy_shroud = "Heilung absorbiert"
 	L.broodkeepers_fury = "Wut (Bruthüterin)"
 	L.frozen_shroud = "Bewegungsunfähig / Absorbtion"
+	-- L.detonating_stoneslam = "Tank Soak"
 end
 
 L = BigWigs:NewBossLocale("Raszageth the Storm-Eater", "deDE")
 if L then
+	L.lighting_devastation_trigger = "tief Luft" -- Raszageth takes a deep breath...
 
+	-- Stage One: The Winds of Change
+	L.hurricane_wing = "Rückstoß"
+	L.volatile_current = "Funken"
+	L.thunderous_blast = "Einschlag"
+	L.lightning_breath = "Atem"
+	L.lightning_strikes = "Schläge"
+	L.electric_scales = "Schlachtzugschaden"
+	L.electric_lash = "Peitschen"
+	-- Intermission: The Primalist Strike
+	L.lightning_devastation = "Atem"
+	L.shattering_shroud = "Heilung absorbiert"
+	-- Stage Two: Surging Power
+	L.stormsurge = "Absorbtionsschild"
+	L.stormcharged = "Positiv oder Negativ"
+	L.positive = "Positiv"
+	L.negative = "Negativ"
+	L.focused_charge = "Schadensbuff"
+	L.tempest_wing = "Sturmwelle"
+	L.fulminating_charge = "Ladungen"
+	L.fulminating_charge_debuff = "Ladung"
+	-- Intermission: The Vault Falters
+	L.storm_break = "Teleport"
+	L.ball_lightning = "Kugeln"
+	 L.fuses_reached = "%d |4Fusionieren:Fusionieren; erreicht" -- 1 Fuse Reached, 2 Fuses Reached
+	-- Stage Three: Storm Incarnate
+	L.magnetic_charge = "Magnetische Ladung"
+
+	L.storm_nova_cast = "Sturmnova Zauberleiste"
+	L.storm_nova_cast_desc = "Zauberleiste für Sturmnova"
+
+	L.custom_on_repeating_stormcharged = "Positiv oder Negativ wiederholen"
+	L.custom_on_repeating_stormcharged_desc = "Gibt wiederholt Positive oder Negative Chatnachrichten mit Symbolen {rt1}, {rt3} aus, um Übereinstimmungen zum Entfernen des Schwächungszaubers zu finden."
+
+	L.skipped_cast = "%s (%d) übersprungen"
+
+	L.custom_off_raidleader_devastation = "Blitzverheerung: Leiter-Modus"
+	L.custom_off_raidleader_devastation_desc = "Zeigt eine Leiste für Blitzverheerung (Atem) auch auf der anderen Seite an."
+	L.breath_other = "%s [Gegenseite]" -- Breath on opposite platform
 end
 
 L = BigWigs:NewBossLocale("Vault of the Incarnates Trash", "deDE")

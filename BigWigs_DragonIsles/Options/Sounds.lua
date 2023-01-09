@@ -9,4 +9,6 @@ BigWigs:AddSounds("Bazual, The Dreaded Flame", {
 })
 
 BigWigs:AddSounds("Liskanoth, The Futurebane", {
+	[389960] = "alert",
+	[391026] = {"long","warning"},
 })

@@ -440,6 +440,12 @@ end
 do
 	-- Talking Head blocking
 	local known = {
+		-- Court of Stars
+		[70615]=true,[70199]=true,[70198]=true,[70197]=true,[70193]=true,
+		[70195]=true,[70196]=true,[70192]=true,[70194]=true,
+		-- Halls of Valor
+		[57160]=true,[57159]=true,[57162]=true,[68701]=true,[57161]=true,
+
 		-- De Other Side
 		[163828]=true,[163830]=true,[163831]=true,[163822]=true,[163823]=true,[163824]=true,[163834]=true,
 		[163835]=true,[163836]=true,[163837]=true,[163819]=true,[163820]=true,[163821]=true,
@@ -474,7 +480,7 @@ do
 		[205770]=true,[205555]=true,[205554]=true,[205838]=true,[205839]=true,[205840]=true,
 		[205831]=true,[205832]=true,[205833]=true,[205841]=true,[205851]=true,[205856]=true,
 		[205504]=true,[205505]=true,[205506]=true,[205507]=true,[205842]=true,[205508]=true,
-		[205814]=true,[205815]=true,[205567]=true,
+		[205814]=true,[205815]=true,[205567]=true,[205852]=true,
 		-- Uldaman: Legacy of Tyr
 		[203125]=true,[203126]=true,[203127]=true,
 	}
@@ -527,6 +533,7 @@ do
 		[956] = true, -- Anduin defeat
 		[957] = true, -- Jailer intro
 		[958] = true, -- Jailer defeat
+		[964] = true, -- Raszageth defeat
 	}
 
 	function plugin:PLAY_MOVIE(_, id)

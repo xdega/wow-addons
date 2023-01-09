@@ -9,4 +9,6 @@ BigWigs:AddColors("Bazual, The Dreaded Flame", {
 })
 
 BigWigs:AddColors("Liskanoth, The Futurebane", {
+	[389960] = "blue",
+	[391026] = {"red","yellow"},
 })
