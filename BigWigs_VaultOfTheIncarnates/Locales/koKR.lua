@@ -20,6 +20,9 @@ if L then
 	 L.shattering_impact = "충격 - 잔해 조심"
 	 L.concussive_slam = "탱커 조심"
 	 L.infused_fallout = "낙진"
+
+	 --L.custom_on_repeating_fallout = "Repeating Infused Fallout"
+	 --L.custom_on_repeating_fallout_desc = "Repeating Infused Fallout say messages with icon {rt7} to find a partner."
 end
 
 L = BigWigs:NewBossLocale("The Primal Council", "koKR")
@@ -35,6 +38,8 @@ if L then
 
 	 L.custom_on_stop_timers = "항상 능력 바 표시"
 	 L.custom_on_stop_timers_desc = "항상 표시될 능력: 전도성 표식"
+
+	 -- L.skipped_cast = "Skipped %s (%d)"
 end
 
 L = BigWigs:NewBossLocale("Sennarth, The Cold Breath", "koKR")
@@ -46,6 +51,8 @@ if L then
 	 L.webs = "거미줄"
 	 L.web = "거미줄"
 	 L.gossamer_burst = "낙사 조심"
+	 -- L.gossamer_burst_castbar = "Gossamer Burst Cast Bar / Countdown"
+	 -- L.gossamer_burst_castbar_desc = "A Cast Bar for Gossamer Burst with Countdown enabled by default."
 	 L.repelling_burst = "넉백"
 end
 
@@ -150,7 +157,6 @@ if L then
 	-- Intermission: The Vault Falters
 	-- L.storm_break = "Teleport"
 	-- L.ball_lightning = "Balls"
-	-- L.fuses_reached = "%d |4Fuse:Fuses; Reached" -- 1 Fuse Reached, 2 Fuses Reached
 	-- Stage Three: Storm Incarnate
 	-- L.magnetic_charge = "Pull Charge"
 

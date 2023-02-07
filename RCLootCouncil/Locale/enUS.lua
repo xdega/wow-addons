@@ -2,9 +2,9 @@
 -- http://wow.curseforge.com/addons/rclootcouncil/localization/
 
 local debug = false
---[===[@debug@
+--[==[@debug@
 debug = false
---@end-debug@]===]
+--@end-debug@]==]
 
 --- Default english translation
 --- @class RCLootCouncilLocale

@@ -1,7 +1,7 @@
-## Interface: 100002
+## Interface: 100005
 ## Title: CurseBreaker Companion
 ## Notes: CurseBreaker -> WoW integration.
-## Version: 1.0.0
+## Version: 1.1.0
 ## Author: AcidWeb
 ## OptionalDeps: WeakAuras, Plater
 

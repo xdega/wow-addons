@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100005
 
 ## Title: BigWigs [|cffeda55fDragon Isles|r]
 ## Title-deDE: BigWigs [|cffeda55fDracheninseln|r]
@@ -16,13 +16,13 @@
 ## Notes-esES: BigWigs Dragon Isles Modules
 ## Notes-esMX: BigWigs Dragon Isles Modules
 ## Notes-frFR: Modules BigWigs des Îles aux Dragons
-## Notes-itIT: BigWigs Dragon Isles Modules
+## Notes-itIT: Moduli BigWigs per le Isole dei Draghi
 ## Notes-koKR: BigWigs Dragon Isles Modules
 ## Notes-ptBR: BigWigs Dragon Isles Modules
 ## Notes-ruRU: BigWigs Dragon Isles Modules
 ## Notes-zhCN: BigWigs 巨龙群岛模块
 ## Notes-zhTW: BigWigs Dragon Isles Modules
-## Version: v261.1
+## Version: v264.2
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

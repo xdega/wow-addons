@@ -60,11 +60,11 @@ local timersEasy = {
 		[395906] = {5, 25, 25, 27, 21, 27, 30, 27, 21}, -- Electrified Jaws
 	},
 	[2] = {
-		[388643] = {68.5, 50}, -- Volatile Current
-		[395906] = {38.5, 24.9, 22.9, 30, 25, 25, 37}, -- Electrified Jaws
+		[388643] = {68.5, 50, 115}, -- Volatile Current
+		[395906] = {38.5, 25, 23, 30, 25, 25, 37, 25}, -- Electrified Jaws
 		[387261] = {8.5, 80, 80, 80}, -- Stormsurge
-		[377467] = {52.5, 85.9}, -- Fulminating Charge
-		[385574] = {43.5, 35, 49.9, 24.9, 55}, -- Tempest Wing
+		[377467] = {52.5, 86, 80}, -- Fulminating Charge
+		[385574] = {43.5, 35, 50, 25, 55}, -- Tempest Wing
 	},
 	[3] = {
 		[377594] = {34.5, 41, 41.9}, -- Lightning Breath
@@ -114,10 +114,10 @@ local timersMythic = {
 		[385574] = {49.5, 30.0, 54.0, 20.0}, -- Tempest Wing
 	},
 	[3] = {
-		[377594] = {38.2, 41.5, 44.0, 30.0}, -- Lightning Breath
+		[377594] = {38.2, 41.5, 44.0, 30.0, 43.0}, -- Lightning Breath
 		[385574] = {70.7, 70.0, 20.0}, -- Tempest Wing
 		[377467] = {43.3, 61.4, 67.0}, -- Fulminating Charge
-		[386410] = {28.7, 29.0, 32.0, 59.0}, -- Thunderous Blast
+		[386410] = {28.7, 29.0, 32.0, 59.0, 30.0, 28.0}, -- Thunderous Blast
 		[399713] = {32.7, 30.0, 33.0, 33.1}, -- Magnetic Charge
 	},
 }
@@ -160,7 +160,6 @@ if L then
 	-- Intermission: The Vault Falters
 	L.storm_break = "Teleport"
 	L.ball_lightning = "Balls"
-	L.fuses_reached = "%d |4Fuse:Fuses; Reached" -- 1 Fuse Reached, 2 Fuses Reached
 	-- Stage Three: Storm Incarnate
 	L.magnetic_charge = "Pull Charge"
 
@@ -355,6 +354,7 @@ function mod:OnEngage()
 
 	-- Intermission: The Primalist Strike
 	lightningDevastationCount = 1
+	addDeathCount = 0
 
 	-- Stage Two: Surging Power
 	stormsurgeCount = 1
@@ -576,7 +576,7 @@ function mod:HurricaneWing(args)
 	self:StopBar(CL.count:format(L.hurricane_wing, hurricaneWingCount))
 	self:Message(args.spellId, "red", CL.casting:format(CL.count:format(L.hurricane_wing, hurricaneWingCount)))
 	self:PlaySound(args.spellId, "warning")
-	self:CastBar(args.spellId, 6+2.5+(hurricaneWingCount/2), CL.count:format(L.hurricane_wing, hurricaneWingCount)) -- 6s cast,  (2.5s+0.5s) base, +0.5s per cast
+	self:CastBar(args.spellId, 6+2.5+(hurricaneWingCount/2), CL.count:format(L.hurricane_wing, hurricaneWingCount)) -- 6s cast, (2.5s+0.5s) base, +0.5s per cast
 	hurricaneWingCount = hurricaneWingCount + 1
 	self:Bar(args.spellId, timers[self:GetStage()][args.spellId][hurricaneWingCount], CL.count:format(L.hurricane_wing, hurricaneWingCount))
 end
@@ -618,7 +618,10 @@ function mod:VolatileCurrent(args)
 	self:Message(args.spellId, "yellow", CL.casting:format(CL.count:format(L.volatile_current, volatileCurrentCount)))
 	self:PlaySound(args.spellId, "alert")
 	volatileCurrentCount = volatileCurrentCount + 1
-	self:Bar(args.spellId, timers[self:GetStage()][args.spellId][volatileCurrentCount], CL.count:format(L.volatile_current, volatileCurrentCount))
+	local stage = self:GetStage()
+	if stage == 1 or stage == 2 then -- It can trigger after intermission 2.5 has started, avoid starting bars
+		self:Bar(args.spellId, timers[self:GetStage()][args.spellId][volatileCurrentCount], CL.count:format(L.volatile_current, volatileCurrentCount))
+	end
 end
 
 function mod:ElectrifiedJaws(args)
@@ -626,7 +629,10 @@ function mod:ElectrifiedJaws(args)
 	self:Message(395906, "purple", CL.casting:format(CL.count:format(args.spellName, electrifiedJawsCount)))
 	self:PlaySound(395906, "info")
 	electrifiedJawsCount = electrifiedJawsCount + 1
-	self:Bar(395906, timers[self:GetStage()][395906][electrifiedJawsCount], CL.count:format(args.spellName, electrifiedJawsCount))
+	local stage = self:GetStage()
+	if stage == 1 or stage == 2 then -- It can trigger after intermission 2.5 has started, avoid starting bars
+		self:Bar(395906, timers[self:GetStage()][395906][electrifiedJawsCount], CL.count:format(args.spellName, electrifiedJawsCount))
+	end
 end
 
 function mod:ElectrifiedJawsApplied(args)
@@ -699,7 +705,7 @@ function mod:StormNovaSuccess(args)
 	self:Message("stages", "cyan", CL.count:format(CL.intermission, 1), args.spellId)
 	self:PlaySound("stages", "info")
 	self:SetStage(1.5)
-	self:Bar("stages", 93.5,  CL.stage:format(2), 387261)
+	self:Bar("stages", 93.5, CL.stage:format(2), 387261)
 
 	lightningDevastationCount = 1
 	flameswornFound = 0
@@ -1002,32 +1008,41 @@ end
 
 do
 	local playerList = {}
+	local prev = 0
 	function mod:FulminatingCharge(args)
 		self:StopBar(CL.count:format(L.fulminating_charge, fulminatingChargeCount))
 		self:PlaySound(377467, "long")
 		fulminatingChargeCount = fulminatingChargeCount + 1
 		self:Bar(377467, timers[self:GetStage()][377467][fulminatingChargeCount], CL.count:format(L.fulminating_charge, fulminatingChargeCount))
-		playerList = {}
 	end
 
 	function mod:FulminatingChargeApplied(args)
+		if args.time - prev > 2 then
+			-- reset count on jump
+			prev = args.time
+			playerList = {}
+		end
 		local count = #playerList+1
 		playerList[count] = args.destName
 		playerList[args.destName] = count -- Set raid marker
 		if self:Me(args.destGUID) then
 			self:Say(args.spellId, L.fulminating_charge_debuff)
-			self:SayCountdown(args.spellId, self:Mythic() and 3 or 5)
+			if self:Mythic() then
+				self:SayCountdown(args.spellId, 3, nil, 2)
+			else
+				self:SayCountdown(args.spellId, self:Heroic() and 5 or 6)
+			end
 			self:PlaySound(args.spellId, "warning")
 		end
 		self:TargetsMessage(args.spellId, "yellow", playerList, 3, CL.count:format(L.fulminating_charge, fulminatingChargeCount-1))
-		self:CustomIcon(fulminatingChargeCount, args.destName, count)
+		self:CustomIcon(fulminatingChargeMarker, args.destName, count)
 	end
 
 	function mod:FulminatingChargeRemoved(args)
 		if self:Me(args.destGUID) then
 			self:CancelSayCountdown(args.spellId)
 		end
-		self:CustomIcon(fulminatingChargeCount, args.destName)
+		self:CustomIcon(fulminatingChargeMarker, args.destName)
 	end
 end
 
@@ -1040,7 +1055,7 @@ function mod:EncounterEvent(args)
 		self:StopBar(CL.count:format(L.fulminating_charge, fulminatingChargeCount)) -- Fulminating Charge(s)
 		self:StopBar(CL.count:format(self:SpellName(395906), electrifiedJawsCount)) -- Electified Jaws
 
-		self:Message("stages", "cyan", CL.count:format(CL.intermission, 2), args.spellId)
+		self:Message("stages", "cyan", CL.count:format(CL.intermission, 2), false)
 		self:PlaySound("stages", "info")
 		self:SetStage(2.5)
 
@@ -1077,13 +1092,13 @@ do
 	local stacks = 0
 	local scheduled = nil
 	function mod:FuseStacksMessage()
-		mod:Message(389878, "cyan", L.fuses_reached:format(stacks))
-		mod:PlaySound(389878, "info")
+		self:StackMessage(389878, "cyan", CL.big_add, stacks, 1)
+		self:PlaySound(389878, "info")
 		scheduled = nil
 		stacks = 0
 	end
 
-	function mod:FuseStacks()
+	function mod:FuseStacks(args)
 		stacks = stacks + 1
 		if not scheduled then
 			scheduled = self:ScheduleTimer("FuseStacksMessage", 2) -- Throttle here
@@ -1107,7 +1122,7 @@ do
 end
 
 function mod:StormfiendDeath()
-	collasalStormFiendKilled =  collasalStormFiendKilled + 1
+	collasalStormFiendKilled = collasalStormFiendKilled + 1
 	self:Message("stages", "green", CL.add_killed:format(collasalStormFiendKilled, collasalStormFiendKillRequired), false)
 	if collasalStormFiendKilled == collasalStormFiendKillRequired then -- End of Intermission
 		self:StopBar(CL.count:format(L.lightning_devastation, lightningDevastationCount))

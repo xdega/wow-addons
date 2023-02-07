@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100005
 
 ## Title: BigWigs [|cffeda55fVault of the Incarnates|r]
 ## Title-deDE: BigWigs [|cffeda55fGewölbe der Inkarnationen|r]
@@ -16,13 +16,13 @@
 ## Notes-esES: BigWigs Vault of the Incarnates Modules
 ## Notes-esMX: BigWigs Vault of the Incarnates Modules
 ## Notes-frFR: Modules BigWigs du Caveau des Incarnations
-## Notes-itIT: BigWigs Vault of the Incarnates Modules
+## Notes-itIT: Moduli BigWigs per le Segrete delle Incarnazioni
 ## Notes-koKR: BigWigs Vault of the Incarnates Modules
 ## Notes-ptBR: BigWigs Vault of the Incarnates Modules
 ## Notes-ruRU: BigWigs Vault of the Incarnates Modules
 ## Notes-zhCN: BigWigs 化身巨龙牢窟模块
 ## Notes-zhTW: BigWigs 洪荒化身牢獄模組
-## Version: v261.1
+## Version: v264.2
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

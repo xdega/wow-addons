@@ -1,10 +1,10 @@
-tag 61e1bd88e5709971b8bc4c8f57d9b0c2c384c982 Details.DF.Wrath.10402.148
+lightweight tag 899ac439a17c19a799d30a6a2a0e2faf5cc215e1 DetailsRetail.8.3.0.7348.141
 Author:	Tercio Jose <terciob19@hotmail.com>
-Date:	Fri Jan 6 12:12:11 2023 -0300
+Date:	Mon Jul 6 11:27:35 2020 -0300
 
-commit 30c41429b111c82271658930d1514cfb9caeefcb
+commit 899ac439a17c19a799d30a6a2a0e2faf5cc215e1
 Author: Tercio Jose <terciob19@hotmail.com>
-Date:   Fri Jan 6 12:11:51 2023 -0300
+Date:   Mon Jul 6 11:27:35 2020 -0300
 
-    Roll back the removal of Streamer! plugin welcome screen due to a bug on new installs
+    Fixed an issue affecting the Auto Hide for some users
 

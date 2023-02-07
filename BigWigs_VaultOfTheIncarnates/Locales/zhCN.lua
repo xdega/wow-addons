@@ -20,6 +20,9 @@ if L then
 	L.shattering_impact = "猛击"
 	L.concussive_slam = "坦克直线"
 	L.infused_fallout = "爆尘"
+
+	L.custom_on_repeating_fallout = "重复爆尘喊话"
+	L.custom_on_repeating_fallout_desc = "以 {rt7} 持续喊话，方便你找人消除爆尘"
 end
 
 L = BigWigs:NewBossLocale("The Primal Council", "zhCN")
@@ -35,6 +38,8 @@ if L then
 
 	L.custom_on_stop_timers = "总是显示计时条"
 	L.custom_on_stop_timers_desc = "总是显示的技能: 传导印记"
+
+	-- L.skipped_cast = "Skipped %s (%d)"
 end
 
 L = BigWigs:NewBossLocale("Sennarth, The Cold Breath", "zhCN")
@@ -45,8 +50,10 @@ if L then
 	L.freezing_breath = "大怪吐息"
 	L.webs = "蛛网"
 	L.web = "蛛网"
-	L.gossamer_burst = "拉近"
-	L.repelling_burst = "推离"
+	L.gossamer_burst = "拉人"
+	L.gossamer_burst_castbar = "拉人计时器"
+	L.gossamer_burst_castbar_desc = "细丝爆裂的冷却及施法计时器，预设启用。"
+	L.repelling_burst = "击退"
 end
 
 L = BigWigs:NewBossLocale("Dathea, Ascended", "zhCN")
@@ -54,7 +61,7 @@ if L then
 	L.conductive_marks = "传导印记"
 	L.conductive_mark = "传导印记"
 	L.raging_burst = "狂怒风暴"
-	L.cyclone = "拉进"
+	L.cyclone = "拉近"
 	L.crosswinds = "纷乱之风"
 end
 
@@ -149,7 +156,6 @@ if L then
 	-- Intermission: The Vault Falters
 	L.storm_break = "传送"
 	L.ball_lightning = "闪电球"
-	-- L.fuses_reached = "%d |4Fuse:Fuses; Reached" -- 1 Fuse Reached, 2 Fuses Reached
 	-- Stage Three: Storm Incarnate
 	L.magnetic_charge = "积雷倒数"
 
@@ -159,7 +165,7 @@ if L then
 	L.custom_on_repeating_stormcharged = "重复正和负"
 	L.custom_on_repeating_stormcharged_desc = "使用图标{rt1}, {rt3} 重复显示正和负的信息，来帮助你找到正确的位置。"
 
-	-- L.skipped_cast = "Skipped %s (%d)"
+	L.skipped_cast = "闪电吐息 %s (%d)"
 
 	L.custom_off_raidleader_devastation = "闪电毁灭: 全局模式"
 	L.custom_off_raidleader_devastation_desc = "在另一个台子上也显示闪电毁灭（吐息）"
