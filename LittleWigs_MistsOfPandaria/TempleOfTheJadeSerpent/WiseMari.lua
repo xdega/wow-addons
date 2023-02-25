@@ -6,7 +6,7 @@ local mod, CL = BigWigs:NewBoss("Wise Mari", 960, 672)
 if not mod then return end
 mod:RegisterEnableMob(56448) -- Wise Mari
 mod:SetEncounterID(1418)
-mod:SetRespawnTime(20)
+mod:SetRespawnTime(25)
 
 --------------------------------------------------------------------------------
 -- Locals
@@ -83,7 +83,7 @@ function mod:WashAway(args)
 end
 
 function mod:WashAwayChannelStart(args)
-	self:CastBar(397785, 12.75)
+	self:CastBar(397785, 12)
 end
 
 function mod:CorruptedVortexApplied(args)

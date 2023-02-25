@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Dragon Isles Modules
 ## Notes-zhCN: BigWigs 巨龙群岛模块
 ## Notes-zhTW: BigWigs Dragon Isles Modules
-## Version: v264.2
+## Version: v266.2
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

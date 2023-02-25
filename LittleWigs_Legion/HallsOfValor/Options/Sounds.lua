@@ -6,7 +6,6 @@ BigWigs:AddSounds("Hymdall", {
 })
 
 BigWigs:AddSounds("Hyrja", {
-	[191976] = "alarm",
 	[192018] = "alert",
 	[192048] = "alarm",
 	[192307] = "long",
@@ -32,6 +31,7 @@ BigWigs:AddSounds("Odyn", {
 	[198077] = "alert",
 	[198263] = "long",
 	[200988] = "alert",
+	[201215] = "info",
 	["warmup"] = "info",
 })
 
@@ -43,6 +43,7 @@ BigWigs:AddSounds("Halls of Valor Trash", {
 	[198888] = "alarm",
 	[198931] = "alert",
 	[198934] = "alarm",
+	[198959] = "alert",
 	[199050] = "alarm",
 	[199090] = "alarm",
 	[199210] = "alarm",

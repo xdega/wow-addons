@@ -6,8 +6,7 @@ BigWigs:AddColors("Hymdall", {
 })
 
 BigWigs:AddColors("Hyrja", {
-	[191976] = {"blue","yellow"},
-	[192018] = "red",
+	[192018] = "purple",
 	[192048] = {"blue","yellow"},
 	[192307] = "orange",
 	[200901] = "orange",
@@ -34,6 +33,7 @@ BigWigs:AddColors("Odyn", {
 	[198077] = "red",
 	[198263] = "red",
 	[200988] = "orange",
+	[201215] = "yellow",
 	["warmup"] = "cyan",
 })
 
@@ -45,9 +45,10 @@ BigWigs:AddColors("Halls of Valor Trash", {
 	[198888] = "purple",
 	[198931] = "red",
 	[198934] = "yellow",
+	[198959] = "yellow",
 	[199050] = "purple",
 	[199090] = "orange",
-	[199210] = "red",
+	[199210] = "orange",
 	[199341] = "red",
 	[199726] = "red",
 	[199805] = "blue",

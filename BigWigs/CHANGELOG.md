@@ -1,10 +1,8 @@
 # BigWigs
 
-## [v264.2](https://github.com/BigWigsMods/BigWigs/tree/v264.2) (2023-02-05)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v264.1...v264.2) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v266.2](https://github.com/BigWigsMods/BigWigs/tree/v266.2) (2023-02-18)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v266.1...v266.2) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- Update zhCN (#1345)  
-- Update zhCN (#1343)  
-- Update zhTW (#1342)  
-- VaultOfTheIncarnates/RaszagethTheStormEater: Add additional Stage 3 timers for Mythic  
-- VaultOfTheIncarnates/SennarthTheColdBreath: Add an extra heroic time for Enveloping Winds  
+- VaultOfTheIncarnates/RaszagethTheStormEater: Add an extra timer for Tempest Wing on heroic  
+- bump version  
+- Send D5 comms prior to D4  
